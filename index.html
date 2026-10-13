@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>سایت سامی</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f5f9;color:#20283a}
+header{background:#142b50;color:white;text-align:center;padding:24px 12px}
+header h1{margin:0 0 8px}
+.banner{background:linear-gradient(135deg,#087e8b,#153d75);color:white;text-align:center;padding:26px 12px;font-size:23px;font-weight:bold}
+main{max-width:520px;margin:24px auto;padding:20px}
+.card{background:white;padding:22px;border-radius:16px;box-shadow:0 4px 18px #00000010}
+label{display:block;margin:14px 0 7px}
+input,select,button{width:100%;padding:13px;border:1px solid #d1d8e3;border-radius:9px;font-size:16px}
+button{background:#1558a6;color:white;border:0;margin-top:16px;cursor:pointer}
+#result{margin-top:20px;overflow-wrap:anywhere}
+footer{text-align:center;color:#657087;padding:20px;font-size:13px}
+</style>
+</head>
+<body>
+<header>
+<h1>سایت سامی</h1>
+<div>به ویب‌سایت ما خوش آمدید</div>
+</header>
+<div class="banner" id="banner">یک جی‌بی انترنت برای یک ساعت در روز</div>
+<main>
+<div class="card">
+<label for="lang">زبان / Language / ژبه</label>
+<select id="lang" onchange="changeLang()">
+<option value="fa">دری</option>
+<option value="en">English</option>
+<option value="ps">پښتو</option>
+</select>
+<h2 id="heading">جستجوی معلومات</h2>
+<label id="nameLabel" for="person">نام</label>
+<input id="person" placeholder="نام خود را بنویسید">
+<label id="phoneLabel" for="phone">شماره تماس</label>
+<input id="phone" type="tel" placeholder="شماره تماس">
+<button id="searchBtn" onclick="searchPerson()">جستجو</button>
+<div id="result"></div>
+</div>
+</main>
+<footer>سایت سامی</footer>
+<script>
+function changeLang(){
+const l=document.getElementById('lang').value;
+const t={
+fa:['یک جی‌بی انترنت برای یک ساعت در روز','جستجوی معلومات','نام','شماره تماس','جستجو','لطفاً نام خود را بنویسید.'],
+en:['1 GB of internet for one hour a day','Search Information','Name','Phone number','Search','Please enter your name.'],
+ps:['هره ورځ د یو ساعت لپاره یو جي بي انټرنېټ','د معلوماتو لټون','نوم','د اړیکې شمېره','لټون','مهرباني وکړئ خپل نوم ولیکئ.']
+}[l];
+document.getElementById('banner').textContent=t[0];
+document.getElementById('heading').textContent=t[1];
+document.getElementById('nameLabel').textContent=t[2];
+document.getElementById('phoneLabel').textContent=t[3];
+document.getElementById('searchBtn').textContent=t[4];
+document.getElementById('person').placeholder=t[2];
+document.getElementById('phone').placeholder=t[3];
+document.documentElement.lang=l;
+document.documentElement.dir=l==='en'?'ltr':'rtl';
+}
+function searchPerson(){
+const name=document.getElementById('person').value.trim();
+const result=document.getElementById('result');
+if(!name){
+result.textContent=document.getElementById('lang').value==='en'?'Please enter your name.':'لطفاً نام را وارد کنید.';
+return;
+}
+result.textContent='برای این نام هنوز معلوماتی ثبت نشده است.';
+}
+</script>
+</body>
+</html>
