@@ -4,494 +4,333 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#071526">
-<title>سمیع الله نوری</title>
-
+<title>صفحه شخصی</title>
 <style>
-:root {
-  --navy:#071526;
-  --navy2:#102743;
-  --gold:#e8c477;
-  --teal:#087f8c;
-  --white:#ffffff;
-}
-* { box-sizing:border-box; }
-body {
-  margin:0;
-  font-family:Tahoma,Arial,sans-serif;
-  color:var(--white);
-  background:var(--navy);
-  line-height:1.8;
-}
-.hidden { display:none !important; }
-.hero {
-  min-height:220px;
-  padding:25px 16px;
-  text-align:center;
-  background:
-    linear-gradient(135deg,rgba(7,21,38,.70),rgba(7,21,38,.55)),
-    linear-gradient(160deg,#31546b,#172d43 55%,#071526);
-  border-bottom:2px solid var(--gold);
-}
-.emblem {
-  width:66px;height:66px;
-  margin:auto;
-  border:2px solid var(--gold);
-  border-radius:50%;
-  display:grid;place-items:center;
-  font-size:25px;font-weight:bold;color:var(--gold);
-}
-h1,h2 { color:var(--gold); }
-.container {
-  width:min(920px,94%);
-  margin:22px auto;
-}
-.card {
-  background:rgba(16,39,67,.96);
-  border:1px solid #39516a;
-  border-radius:15px;
-  padding:18px;
-  margin-bottom:18px;
-}
-input,textarea,select,button {
-  width:100%;
-  padding:12px;
-  margin:7px 0;
-  border-radius:8px;
-  font:inherit;
-}
-input,textarea,select {
-  background:#fff;color:#111;
-  border:1px solid #aaa;
-}
-button {
-  background:var(--gold);
-  color:#071526;
-  border:0;
-  font-weight:bold;
-  cursor:pointer;
-}
-button.secondary { background:#087f8c;color:white; }
-button.danger { background:#9b3030;color:white; }
-.row {
-  display:flex;gap:10px;flex-wrap:wrap;
-}
-.row>* { flex:1;min-width:130px; }
-.status { color:#ffdc91;white-space:pre-wrap; }
-.feature-image {
-  width:100%;max-height:380px;
-  object-fit:contain;border-radius:10px;
-}
-.bubble {
-  background:#e8eef4;color:#152638;
-  border-radius:12px;padding:12px;margin:9px 0;
-  overflow-wrap:anywhere;
-}
-.admin-reply { background:#d7f4e6; }
-.small { color:#c8d5e2;font-size:13px; }
-footer {
-  text-align:center;padding:20px;
-  color:#d2d9e1;border-top:1px solid #39516a;
-}
+:root{--bg:#071526;--panel:#102943;--gold:#e8c477;--teal:#087f8c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:white;font-family:Tahoma,Arial,sans-serif;line-height:1.8}
+header{text-align:center;padding:18px;background:#0b1d31;border-bottom:2px solid var(--gold)}
+header h1{margin:8px 0;color:var(--gold);font-size:24px}
+button,input,textarea,select{font:inherit;width:100%;padding:11px;margin:6px 0;border-radius:8px}
+input,textarea,select{border:1px solid #aaa;background:white;color:#111}
+button{background:var(--gold);border:0;color:#071526;font-weight:bold;cursor:pointer}
+.secondary{background:var(--teal);color:white}
+.danger{background:#9b3030;color:white}
+.wrap{width:min(900px,94%);margin:20px auto}
+.card{background:var(--panel);padding:16px;border:1px solid #35516b;border-radius:14px;margin:15px 0}
+h2{color:var(--gold);font-size:20px}
+.hidden{display:none!important}
+.status{color:#ffe0a0;white-space:pre-wrap}
+.small{font-size:13px;color:#ccd8e4}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row>*{flex:1;min-width:120px}
+.msg{background:#e7edf3;color:#152638;padding:12px;border-radius:10px;margin:9px 0;overflow-wrap:anywhere}
+.reply{background:#d7f4e6}
+.photo{max-width:100%;max-height:400px;display:block;margin:10px auto;border-radius:10px}
+footer{text-align:center;padding:18px;color:#cbd5df}
 </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="emblem">SN</div>
-  <h1>سمیع الله نوری</h1>
-  <p>به ویب‌سایت رسمی خوش آمدید</p>
+<header>
+  <div id="hero" style="max-width:100%;margin:auto">
+    <svg viewBox="0 0 1000 330" role="img" aria-label="نمایی از شهر کابل، کوه‌ها و بیرق افغانستان" style="width:100%;max-height:300px;display:block;border-radius:10px">
+      <defs>
+        <linearGradient id="sky" x2="0" y2="1">
+          <stop stop-color="#eaa86e"/><stop offset="1" stop-color="#273f5b"/>
+        </linearGradient>
+        <linearGradient id="mountain" x2="0" y2="1">
+          <stop stop-color="#687989"/><stop offset="1" stop-color="#263747"/>
+        </linearGradient>
+      </defs>
+      <rect width="1000" height="330" fill="url(#sky)"/>
+      <circle cx="790" cy="72" r="35" fill="#ffe2a2" opacity=".9"/>
+      <path d="M0 240 L100 160 170 207 280 115 375 210 490 130 610 222 740 135 850 213 930 157 1000 220 V330 H0Z" fill="url(#mountain)"/>
+      <path d="M0 268 L110 220 200 253 300 195 420 263 540 205 660 266 790 210 900 260 1000 225 V330 H0Z" fill="#26394b"/>
+      <g fill="#d2c5ac" stroke="#9a8b77" stroke-width="2">
+        <path d="M0 290h60v-30h45v30h45v-45h35v45h45v-25h50v25h45v-50h50v50h45v-32h35v32h50v-45h40v45h45v-26h55v26h50v-55h38v55h42v-30h52v30h50v-44h48v44h50v40H0Z"/>
+      </g>
+      <g fill="#33485b">
+        <rect x="95" y="271" width="8" height="19"/><rect x="240" y="268" width="8" height="22"/>
+        <rect x="368" y="260" width="8" height="30"/><rect x="515" y="265" width="8" height="25"/>
+        <rect x="700" y="263" width="8" height="27"/><rect x="885" y="263" width="8" height="27"/>
+      </g>
+      <g transform="translate(690 112) rotate(-7)">
+        <path d="M0 0v142" stroke="#272c33" stroke-width="5"/>
+        <path d="M4 3 Q65 8 120 0 L120 70 Q60 79 4 70Z" fill="#111"/>
+        <path d="M4 70 Q65 79 120 70 L120 140 Q60 148 4 140Z" fill="#168449"/>
+        <path d="M4 3 Q65 8 120 0 L120 70 Q60 79 4 70Z" fill="#111"/>
+        <path d="M4 70 Q65 79 120 70 L120 140 Q60 148 4 140Z" fill="#168449"/>
+        <path d="M4 47 Q65 55 120 44 L120 96 Q60 106 4 96Z" fill="#c8323e"/>
+        <g transform="translate(52 56)" fill="none" stroke="#f5e8cf" stroke-width="2">
+          <circle r="15"/><path d="M-9 -8h18v16h-18zM-12 0h24M0 -12v24"/>
+        </g>
+      </g>
+      <rect width="1000" height="330" fill="#071526" opacity=".12"/>
+    </svg>
+  </div>
+  <h1 id="brandName">صفحه شخصی</h1>
+  <div>به صفحه خوش آمدید</div>
   <select id="language" aria-label="زبان">
-    <option value="fa">دری</option>
-    <option value="en">English</option>
-    <option value="ps">پښتو</option>
+    <option value="fa">دری</option><option value="ps">پښتو</option><option value="en">English</option>
   </select>
 </header>
 
-<main class="container">
+<main class="wrap">
+  <section id="entry" class="card">
+    <h2 id="entryTitle">ورود به صفحه</h2>
+    <p>یک جی‌بی انترنت برای یک ساعت در روز</p>
+    <p class="small">برای درخواست ورود، نام و شماره تیلفون خود را بنویسید. ورود پس از تأیید مدیر فعال می‌شود.</p>
+    <input id="name" maxlength="80" placeholder="نام شما">
+    <input id="phone" maxlength="30" placeholder="شماره تیلفون">
+    <button id="requestBtn">درخواست ورود</button>
+    <p id="entryStatus" class="status"></p>
+  </section>
 
-<section id="entryPage" class="card">
-  <h2>ورود به سایت</h2>
-  <p>نام و شماره تیلفون خود را وارد کنید.</p>
-  <input id="userName" maxlength="80" placeholder="نام شما">
-  <input id="userPhone" maxlength="30" placeholder="شماره تیلفون">
-  <button id="enterBtn">ورود به سایت</button>
-  <p id="entryStatus" class="status"></p>
-</section>
+  <section id="waiting" class="card hidden">
+    <h2>درخواست شما ثبت شد</h2>
+    <p>لطفاً منتظر تأیید مدیر بمانید. پس از تأیید، همین صفحه را دوباره باز کنید.</p>
+    <button id="checkBtn">بررسی وضعیت ورود</button>
+    <button id="backEntry" class="secondary">بازگشت</button>
+    <p id="waitStatus" class="status"></p>
+  </section>
 
-<section id="homePage" class="hidden">
-  <div class="card">
-    <h2 id="welcome">خوش آمدید</h2>
-    <p>محتوا و پیام‌های مربوط به حساب شما در این بخش نمایش داده می‌شود.</p>
-    <button id="logoutBtn" class="secondary">خروج</button>
-  </div>
+  <section id="userPage" class="hidden">
+    <div class="card">
+      <h2 id="welcome">خوش آمدید</h2>
+      <div id="userContent">هنوز محتوایی برای شما نشر نشده است.</div>
+      <button id="userLogout" class="secondary">خروج</button>
+    </div>
+    <div class="card">
+      <h2>پیام‌رسان</h2>
+      <div id="userMessages"></div>
+      <textarea id="messageText" maxlength="2000" placeholder="پیام خود را بنویسید"></textarea>
+      <button id="sendMessage">ارسال پیام</button>
+      <p id="messageStatus" class="status"></p>
+    </div>
+  </section>
 
-  <div class="card">
-    <h2>محتوای مخصوص شما</h2>
-    <div id="emptyContent">هنوز عکس یا نوشته‌ای برای شما نشر نشده است.</div>
-    <div id="publishedContent"></div>
-    <p id="contentStatus" class="status"></p>
-  </div>
+  <section id="adminLogin" class="card hidden">
+    <h2>ورود مدیر</h2>
+    <input id="email" type="email" placeholder="ایمیل مدیر">
+    <input id="password" type="password" placeholder="رمز عبور">
+    <button id="loginAdmin">ورود</button>
+    <button id="cancelAdmin" class="secondary">بازگشت</button>
+    <p id="adminStatus" class="status"></p>
+  </section>
 
-  <div class="card">
-    <h2>پیام‌رسان</h2>
-    <div id="chatBody"></div>
-    <textarea id="messageInput" maxlength="2000"
-      placeholder="پیام خود را بنویسید..."></textarea>
-    <button id="sendBtn">ارسال پیام</button>
-    <p id="chatStatus" class="status"></p>
-  </div>
-</section>
-
-<section id="adminLoginPage" class="hidden card">
-  <h2>ورود مدیر</h2>
-  <input id="adminEmail" type="email" placeholder="ایمیل مدیر">
-  <input id="adminPassword" type="password" placeholder="رمز عبور">
-  <button id="adminLoginBtn">ورود به پنل مدیر</button>
-  <button id="backBtn" class="secondary">بازگشت</button>
-  <p id="adminLoginStatus" class="status"></p>
-</section>
-
-<section id="adminPage" class="hidden">
-  <div class="card">
-    <h2>پنل مدیریت</h2>
-    <button id="adminLogoutBtn" class="danger">خروج مدیر</button>
-  </div>
-
-  <div class="card">
-    <h2>کاربران سایت</h2>
-    <div id="usersList"></div>
-  </div>
-
-  <div class="card">
-    <h2>نشر محتوا برای کاربر انتخاب‌شده</h2>
-    <p id="selectedUser">هنوز کاربری انتخاب نشده است.</p>
-    <input id="contentTitle" maxlength="150" placeholder="عنوان نوشته">
-    <textarea id="contentText" maxlength="10000"
-      placeholder="متن مورد نظر"></textarea>
-    <input id="contentImage" type="url"
-      placeholder="لینک مستقیم عکس">
-    <button id="publishBtn">نشر برای این کاربر</button>
-    <p id="publishStatus" class="status"></p>
-  </div>
-
-  <div class="card">
-    <h2>تمام پیام‌های کاربران</h2>
-    <div id="allMessages"></div>
-  </div>
-</section>
-
+  <section id="adminPage" class="hidden">
+    <div class="card">
+      <h2>پنل مدیریت</h2>
+      <p class="small">کاربران، درخواست‌های ورود، محتوا و پیام‌ها را مدیریت کنید.</p>
+      <button id="adminLogout" class="danger">خروج مدیر</button>
+    </div>
+    <div class="card">
+      <h2>درخواست‌ها و کاربران</h2>
+      <div id="users"></div>
+    </div>
+    <div class="card">
+      <h2>نشر عکس و متن برای کاربر انتخاب‌شده</h2>
+      <p id="selected">یک کاربر را انتخاب کنید.</p>
+      <input id="postTitle" maxlength="150" placeholder="عنوان">
+      <textarea id="postText" maxlength="10000" placeholder="متن"></textarea>
+      <input id="imageUrl" type="url" placeholder="لینک مستقیم عکس (https://...)">
+      <p class="small">عکس را در یک سرویس میزبانی عکس بارگذاری کنید و لینک مستقیم آن را اینجا بگذارید. لینک باید به خود عکس ختم شود.</p>
+      <button id="publish">نشر محتوا</button>
+      <button id="removeContent" class="danger">حذف محتوای این کاربر</button>
+      <p id="publishStatus" class="status"></p>
+    </div>
+    <div class="card">
+      <h2>پیام‌های کاربران</h2>
+      <div id="adminMessages"></div>
+    </div>
+  </section>
 </main>
-
-<footer>سمیع الله نوری — تمامی حقوق محفوظ است</footer>
+<footer>صفحه شخصی</footer>
 
 <script type="module">
-import { initializeApp }
-  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {
-  getAuth, signInAnonymously, signInWithEmailAndPassword,
-  signOut, onAuthStateChanged
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import {
-  getFirestore, collection, doc, setDoc, addDoc,
-  onSnapshot, query, where, serverTimestamp, getDoc
-} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getAuth,signInAnonymously,signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getFirestore,doc,setDoc,getDoc,addDoc,deleteDoc,collection,onSnapshot,query,where,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// Firebase Config
-const firebaseConfig = {
-  apiKey: "AIzaSyB55tsTKjUe6TfOtcXpoJmrIV5NWYXNFos",
-  authDomain: "sami-web-2be7.firebaseapp.com",
-  projectId: "sami-web-2be7",
-  storageBucket: "sami-web-2be7.firebasestorage.app",
-  messagingSenderId: "631995015062",
-  appId: "1:631995015062:web:21dcfa50c6231168c907b7"
+const firebaseConfig={
+ apiKey:"AIzaSyB55tsTKjUe6TfOtcXpoJmrIV5NWYXNFos",
+ authDomain:"sami-web-2be7.firebaseapp.com",
+ projectId:"sami-web-2be7",
+ storageBucket:"sami-web-2be7.firebasestorage.app",
+ messagingSenderId:"631995015062",
+ appId:"1:631995015062:web:21dcfa50c6231168c907b7"
 };
+const ADMIN_UID="n6ONAJkRIHYpv4pWALIDuAIXcTz1";
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+let me=null,myName="",myPhone="",selectedUid="",unsubs=[];
 
-const ADMIN_UID = "n6ONAJkRIHYpv4pWALIDuAIXcTz1";
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-const $ = id => document.getElementById(id);
-const safe = value => String(value ?? "").replace(/[&<>"']/g, c => ({
-  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-}[c]));
+function show(id){["entry","waiting","userPage","adminLogin","adminPage"].forEach(x=>$(x).classList.toggle("hidden",x!==id))}
+function msg(id,s){$(id).textContent=s}
+function stopAll(){unsubs.forEach(f=>f());unsubs=[]}
+async function guest(){if(!auth.currentUser)await signInAnonymously(auth);return auth.currentUser}
 
-let currentUser = null;
-let userName = "";
-let userPhone = "";
-let selectedUid = "";
-let stopOwn = null;
-let stopContent = null;
-let stopAll = null;
-let stopUsers = null;
-
-function show(id) {
-  ["entryPage","homePage","adminLoginPage","adminPage"]
-    .forEach(x => $(x).classList.toggle("hidden",x !== id));
+async function getSite(){
+ const snap=await getDoc(doc(db,"siteContent","main"));
+ return snap.exists()?snap.data():{};
 }
-function status(id,message) { $(id).textContent = message; }
-
-async function ensureGuest() {
-  if (!auth.currentUser) await signInAnonymously(auth);
-  return auth.currentUser;
+async function isApproved(uid){
+ const site=await getSite();
+ return Array.isArray(site.approvedUids)&&site.approvedUids.includes(uid);
 }
-
-$("enterBtn").addEventListener("click", async () => {
-  userName = $("userName").value.trim();
-  userPhone = $("userPhone").value.trim();
-  if (!userName || !userPhone) {
-    status("entryStatus","لطفاً نام و شماره تیلفون را وارد کنید.");
-    return;
-  }
-  try {
-    status("entryStatus","لطفاً صبر کنید...");
-    const user = await ensureGuest();
-    await setDoc(doc(db,"users",user.uid),{
-      uid:user.uid,name:userName,phone:userPhone,
-      updatedAt:serverTimestamp()
-    },{merge:true});
-    currentUser = user;
-    $("welcome").textContent = "خوش آمدید، " + userName;
-    show("homePage");
-    startOwnMessages(user);
-    startPersonalContent(user);
-  } catch(e) {
-    status("entryStatus","خطا در ورود: " + e.message);
-  }
-});
-function stopListeners() {
-  [stopOwn,stopContent,stopAll,stopUsers].forEach(fn => {
-    if (typeof fn === "function") fn();
+async function enterUser(){
+ if(!me)return;
+ const ok=await isApproved(me.uid);
+ if(!ok){show("waiting");return}
+ show("userPage");
+ $("welcome").textContent="خوش آمدید، "+myName;
+ watchContent(me.uid);watchMessages(me.uid);
+}
+$("requestBtn").onclick=async()=>{
+ myName=$("name").value.trim();myPhone=$("phone").value.trim();
+ if(!myName||!myPhone){msg("entryStatus","نام و شماره تیلفون را وارد کنید.");return}
+ try{
+  msg("entryStatus","در حال ثبت درخواست...");
+  me=await guest();
+  await setDoc(doc(db,"users",me.uid),{uid:me.uid,name:myName,phone:myPhone,requestedAt:serverTimestamp()},{merge:true});
+  show("waiting");msg("waitStatus","درخواست ثبت شد؛ منتظر تأیید مدیر باشید.");
+ }catch(e){msg("entryStatus","خطا: "+e.message)}
+};
+$("checkBtn").onclick=async()=>{
+ try{
+  if(await isApproved(me.uid))await enterUser();
+  else msg("waitStatus","هنوز درخواست شما تأیید نشده است.");
+ }catch(e){msg("waitStatus","خطا: "+e.message)}
+};
+$("backEntry").onclick=()=>show("entry");
+function watchContent(uid){
+ const stop=onSnapshot(doc(db,"personContent",uid),snap=>{
+  const box=$("userContent");box.innerHTML="";
+  if(!snap.exists()){box.textContent="هنوز محتوایی برای شما نشر نشده است.";return}
+  const d=snap.data();
+  if(d.title){const h=document.createElement("h3");h.textContent=d.title;box.appendChild(h)}
+  if(d.text){const p=document.createElement("p");p.textContent=d.text;box.appendChild(p)}
+  if(d.image){const im=document.createElement("img");im.className="photo";im.src=d.image;im.alt=d.title||"عکس";box.appendChild(im)}
+ },e=>msg("messageStatus","خطا در محتوا: "+e.message));
+ unsubs.push(stop);
+}
+function watchMessages(uid){
+ const stop=onSnapshot(query(collection(db,"messages"),where("ownerUid","==",uid)),snap=>{
+  const box=$("userMessages");box.innerHTML="";
+  snap.forEach(s=>{
+   const d=s.data(),el=document.createElement("div");el.className="msg";
+   el.innerHTML="<b>پیام شما:</b><br>"+esc(d.message);
+   if(d.reply)el.innerHTML+='<div class="msg reply"><b>پاسخ مدیر:</b><br>'+esc(d.reply)+"</div>";
+   box.appendChild(el);
   });
-  stopOwn = stopContent = stopAll = stopUsers = null;
+ },e=>msg("messageStatus","خطا: "+e.message));
+ unsubs.push(stop);
 }
+$("sendMessage").onclick=async()=>{
+ const text=$("messageText").value.trim();
+ if(!me||!text)return msg("messageStatus","پیام را بنویسید.");
+ try{
+  await addDoc(collection(db,"messages"),{ownerUid:me.uid,name:myName,phone:myPhone,message:text,reply:"",repliedAt:null,createdAt:serverTimestamp()});
+  $("messageText").value="";msg("messageStatus","پیام ارسال شد.");
+ }catch(e){msg("messageStatus","ارسال نشد: "+e.message)}
+};
+$("userLogout").onclick=async()=>{stopAll();me=null;await signOut(auth);show("entry")};
 
-function startOwnMessages(user) {
-  if (stopOwn) stopOwn();
-  stopOwn = onSnapshot(
-    query(collection(db,"messages"),where("ownerUid","==",user.uid)),
-    snapshot => {
-      const box = $("chatBody");
-      box.innerHTML = "";
-      snapshot.forEach(item => {
-        const m = item.data();
-        const div = document.createElement("div");
-        div.className = "bubble";
-        div.innerHTML =
-          "<b>پیام شما:</b><br>" + safe(m.message);
-        if (m.reply) {
-          div.innerHTML +=
-            '<div class="bubble admin-reply"><b>پاسخ مدیر:</b><br>' +
-            safe(m.reply) + "</div>";
-        }
-        box.appendChild(div);
-      });
-    },
-    error => status("chatStatus","خطا در پیام‌ها: " + error.message)
-  );
+/* ورود مخفی مدیر: دو انگشت را ۵ ثانیه روی نشان بیرق نگه دارید */
+let fingers=new Set(),hold;
+$("hero").addEventListener("touchstart",e=>{
+ for(const t of e.changedTouches)fingers.add(t.identifier);
+ if(fingers.size>=2&&!hold)hold=setTimeout(()=>show("adminLogin"),5000);
+},{passive:true});
+function clearHold(e){
+ for(const t of e.changedTouches)fingers.delete(t.identifier);
+ if(fingers.size<2){clearTimeout(hold);hold=null}
 }
+$("hero").addEventListener("touchend",clearHold,{passive:true});
+$("hero").addEventListener("touchcancel",clearHold,{passive:true});
 
-function startPersonalContent(user) {
-  if (stopContent) stopContent();
-  stopContent = onSnapshot(
-    doc(db,"personContent",user.uid),
-    snapshot => {
-      const box = $("publishedContent");
-      box.innerHTML = "";
-      $("emptyContent").classList.toggle("hidden",snapshot.exists());
-      if (!snapshot.exists()) return;
-      const data = snapshot.data();
-      const title = document.createElement("h3");
-      title.textContent = data.title || "";
-      const paragraph = document.createElement("p");
-      paragraph.textContent = data.text || "";
-      box.append(title,paragraph);
-      if (data.image) {
-        const img = document.createElement("img");
-        img.className = "feature-image";
-        img.src = data.image;
-        img.alt = data.title || "عکس";
-        img.referrerPolicy = "no-referrer";
-        box.appendChild(img);
-      }
-    },
-    error => status("contentStatus","خطا: " + error.message)
-  );
+$("cancelAdmin").onclick=()=>show("entry");
+$("loginAdmin").onclick=async()=>{
+ try{
+  const r=await signInWithEmailAndPassword(auth,$("email").value.trim(),$("password").value);
+  if(r.user.uid!==ADMIN_UID){await signOut(auth);return msg("adminStatus","این حساب مدیر تعیین‌شده نیست.")}
+  me=r.user;show("adminPage");watchAdmin();
+ }catch(e){msg("adminStatus","ورود ناموفق: "+e.message)}
+};
+function watchAdmin(){
+ stopAll();
+ unsubs.push(onSnapshot(collection(db,"users"),snap=>{
+  const box=$("users");box.innerHTML="";
+  snap.forEach(s=>{
+   const u=s.data(),b=document.createElement("button");
+   b.className="secondary";b.textContent=(u.name||"بدون نام")+" — "+(u.phone||"")+" | UID: "+s.id;
+   b.onclick=async()=>{
+    selectedUid=s.id;$("selected").textContent=(u.name||"")+" — "+(u.phone||"");
+    const approved=await isApproved(s.id);
+    const a=document.createElement("button");a.textContent=approved?"لغو تأیید ورود":"تأیید ورود";
+    a.onclick=()=>approval(s.id,!approved);
+    box.appendChild(a);
+   };
+   box.appendChild(b);
+  });
+ },e=>msg("publishStatus","خطای کاربران: "+e.message)));
+ unsubs.push(onSnapshot(collection(db,"messages"),snap=>{
+  const box=$("adminMessages");box.innerHTML="";
+  snap.forEach(s=>{
+   const d=s.data(),c=document.createElement("div");c.className="msg";
+   const p=document.createElement("p");p.textContent=(d.name||"کاربر")+" ("+(d.phone||"")+"): "+(d.message||"");
+   const ta=document.createElement("textarea");ta.maxLength=2000;ta.placeholder="پاسخ مدیر";ta.value=d.reply||"";
+   const b=document.createElement("button");b.textContent="ذخیره پاسخ";
+   b.onclick=async()=>{try{await setDoc(doc(db,"messages",s.id),{reply:ta.value.trim(),repliedAt:serverTimestamp()},{merge:true});msg("publishStatus","پاسخ ذخیره شد.")}catch(e){msg("publishStatus",e.message)}};
+   const del=document.createElement("button");del.className="danger";del.textContent="حذف پیام";
+   del.onclick=async()=>{if(confirm("پیام حذف شود؟"))try{await deleteDoc(doc(db,"messages",s.id))}catch(e){msg("publishStatus",e.message)}};
+   c.append(p,ta,b,del);box.appendChild(c);
+  });
+ },e=>msg("publishStatus","خطای پیام‌ها: "+e.message)));
 }
-
-$("sendBtn").addEventListener("click",async () => {
-  const message = $("messageInput").value.trim();
-  if (!currentUser || !message) {
-    status("chatStatus","اول وارد سایت شو و پیام بنویس.");
-    return;
-  }
-  try {
-    await addDoc(collection(db,"messages"),{
-      ownerUid:currentUser.uid,
-      name:userName,
-      phone:userPhone,
-      message,
-      reply:"",
-      repliedAt:null,
-      createdAt:serverTimestamp()
-    });
-    $("messageInput").value = "";
-    status("chatStatus","پیام ارسال شد.");
-  } catch(e) {
-    status("chatStatus","پیام ارسال نشد: " + e.message);
-  }
-});
-
-$("logoutBtn").addEventListener("click",async () => {
-  stopListeners();
-  currentUser = null;
-  await signOut(auth);
-  show("entryPage");
-});
-
-$("backBtn").addEventListener("click",() => show("entryPage"));
-
-// باز کردن صفحه ورود مدیر با نگه‌داشتن نشان SN
-let holdTimer;
-const emblem = document.querySelector(".emblem");
-emblem.addEventListener("pointerdown",() => {
-  holdTimer = setTimeout(() => show("adminLoginPage"),3000);
-});
-["pointerup","pointerleave","pointercancel"].forEach(eventName => {
-  emblem.addEventListener(eventName,() => clearTimeout(holdTimer));
-});
-
-$("adminLoginBtn").addEventListener("click",async () => {
-  const email = $("adminEmail").value.trim();
-  const password = $("adminPassword").value;
-  if (!email || !password) {
-    status("adminLoginStatus","ایمیل و رمز عبور را وارد کن.");
-    return;
-  }
-  try {
-    status("adminLoginStatus","در حال بررسی...");
-    const result = await signInWithEmailAndPassword(auth,email,password);
-    if (result.user.uid !== ADMIN_UID) {
-      await signOut(auth);
-      status("adminLoginStatus","این حساب، مدیر تعیین‌شده سایت نیست.");
-      return;
-    }
-    currentUser = result.user;
-    show("adminPage");
-    startAdminPanel();
-  } catch(e) {
-    status("adminLoginStatus","ورود ناموفق: " + e.message);
-  }
-});
-
-function startAdminPanel() {
-  if (stopUsers) stopUsers();
-  if (stopAll) stopAll();
-
-  stopUsers = onSnapshot(collection(db,"users"),snapshot => {
-    const box = $("usersList");
-    box.innerHTML = "";
-    snapshot.forEach(item => {
-      const u = item.data();
-      const button = document.createElement("button");
-      button.className = "secondary";
-      button.textContent = (u.name || "بدون نام") +
-        " — " + (u.phone || "بدون شماره");
-      button.addEventListener("click",() => {
-        selectedUid = item.id;
-        $("selectedUser").textContent =
-          (u.name || "") + " — " + (u.phone || "");
-        status("publishStatus","");
-      });
-      box.appendChild(button);
-    });
-  },e => status("publishStatus","خطای کاربران: " + e.message));
-
-  stopAll = onSnapshot(collection(db,"messages"),snapshot => {
-    const box = $("allMessages");
-    box.innerHTML = "";
-    snapshot.forEach(item => {
-      const m = item.data();
-      const card = document.createElement("div");
-      card.className = "bubble";
-      const info = document.createElement("p");
-      info.textContent = (m.name || "کاربر") + " (" +
-        (m.phone || "") + "): " + (m.message || "");
-      const reply = document.createElement("textarea");
-      reply.maxLength = 2000;
-      reply.placeholder = "پاسخ مدیر";
-      reply.value = m.reply || "";
-      const save = document.createElement("button");
-      save.textContent = "ذخیره پاسخ";
-      save.addEventListener("click",async () => {
-        try {
-          await setDoc(doc(db,"messages",item.id),{
-            reply:reply.value.trim(),
-            repliedAt:serverTimestamp()
-          },{merge:true});
-          status("publishStatus","پاسخ ذخیره شد.");
-        } catch(e) {
-          status("publishStatus","خطا در پاسخ: " + e.message);
-        }
-      });
-      const remove = document.createElement("button");
-      remove.className = "danger";
-      remove.textContent = "حذف پیام";
-      remove.addEventListener("click",async () => {
-        if (!confirm("آیا پیام حذف شود؟")) return;
-        try {
-          const { deleteDoc } = await import(
-            "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
-          );
-          await deleteDoc(doc(db,"messages",item.id));
-        } catch(e) {
-          status("publishStatus","حذف ناموفق: " + e.message);
-        }
-      });
-      card.append(info,reply,save,remove);
-      box.appendChild(card);
-    });
-  },e => status("publishStatus","خطای پیام‌ها: " + e.message));
+async function approval(uid,yes){
+ try{
+  const site=await getSite(),list=Array.isArray(site.approvedUids)?site.approvedUids:[];
+  const next=yes?[...new Set([...list,uid])]:list.filter(x=>x!==uid);
+  await setDoc(doc(db,"siteContent","main"),{approvedUids:next},{merge:true});
+  msg("publishStatus",yes?"ورود کاربر تأیید شد.":"تأیید ورود لغو شد.");
+  watchAdmin();
+ }catch(e){msg("publishStatus","تأیید انجام نشد: "+e.message+" — قواعد Firestore را بررسی کنید.")}
 }
+$("publish").onclick=async()=>{
+ if(!selectedUid)return msg("publishStatus","اول یک کاربر را انتخاب کنید.");
+ const image=$("imageUrl").value.trim();
+ if(image&&!/^https:\/\/\S+$/i.test(image))return msg("publishStatus","لینک عکس باید با https:// شروع شود.");
+ try{
+  await setDoc(doc(db,"personContent",selectedUid),{title:$("postTitle").value.trim(),text:$("postText").value.trim(),image,updatedAt:serverTimestamp()});
+  msg("publishStatus","محتوا نشر شد.");
+ }catch(e){msg("publishStatus","نشر ناموفق: "+e.message)}
+};
+$("removeContent").onclick=async()=>{
+ if(!selectedUid)return msg("publishStatus","اول کاربر را انتخاب کنید.");
+ try{await deleteDoc(doc(db,"personContent",selectedUid));msg("publishStatus","محتوا حذف شد.")}catch(e){msg("publishStatus",e.message)}
+};
+$("adminLogout").onclick=async()=>{stopAll();me=null;await signOut(auth);show("entry")};
 
-$("publishBtn").addEventListener("click",async () => {
-  if (!selectedUid) {
-    status("publishStatus","اول یک کاربر را انتخاب کن.");
-    return;
-  }
-  const title = $("contentTitle").value.trim();
-  const text = $("contentText").value.trim();
-  const image = $("contentImage").value.trim();
-
-  if (image && !/^https:\/\/\S+$/i.test(image)) {
-    status("publishStatus","لینک عکس باید با https:// شروع شود.");
-    return;
-  }
-  try {
-    await setDoc(doc(db,"personContent",selectedUid),{
-      title,text,image,updatedAt:serverTimestamp()
-    });
-    status("publishStatus","محتوا برای کاربر انتخاب‌شده نشر شد.");
-  } catch(e) {
-    status("publishStatus","نشر ناموفق: " + e.message);
-  }
-});
-
-$("adminLogoutBtn").addEventListener("click",async () => {
-  stopListeners();
-  currentUser = null;
-  selectedUid = "";
-  await signOut(auth);
-  show("entryPage");
-});
-
-$("language").addEventListener("change",event => {
-  const lang = event.target.value;
-  document.documentElement.lang = lang;
-  document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
-});
-
-// پایان فایل
+$("language").onchange=e=>{
+ const lang=e.target.value;document.documentElement.lang=lang;
+ document.documentElement.dir=lang==="en"?"ltr":"rtl";
+ if(lang==="en"){
+  $("entryTitle").textContent="Page access";
+  $("requestBtn").textContent="Request access";
+  $("brandName").textContent="Personal Page";
+ }else if(lang==="ps"){
+  $("entryTitle").textContent="پاڼې ته ننوتل";
+  $("requestBtn").textContent="د ننوتلو غوښتنه";
+  $("brandName").textContent="شخصي پاڼه";
+ }else{
+  $("entryTitle").textContent="ورود به صفحه";
+  $("requestBtn").textContent="درخواست ورود";
+  $("brandName").textContent="صفحه شخصی";
+ }
+};
 </script>
 </body>
 </html>
