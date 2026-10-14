@@ -3,157 +3,219 @@
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>صفحه شخصی</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071526">
+<title>سمیع الله نوری</title>
 <style>
-:root{--bg:#071526;--panel:#102943;--gold:#e8c477;--teal:#087f8c}
+:root{--navy:#071526;--navy2:#102743;--gold:#e8c477;--teal:#087f8c;--white:#fff}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:white;font-family:Tahoma,Arial,sans-serif;line-height:1.8}
-header{text-align:center;padding:18px;background:#0b1d31;border-bottom:2px solid var(--gold)}
-header h1{margin:8px 0;color:var(--gold);font-size:24px}
-button,input,textarea,select{font:inherit;width:100%;padding:11px;margin:6px 0;border-radius:8px}
-input,textarea,select{border:1px solid #aaa;background:white;color:#111}
-button{background:var(--gold);border:0;color:#071526;font-weight:bold;cursor:pointer}
-.secondary{background:var(--teal);color:white}
-.danger{background:#9b3030;color:white}
-.wrap{width:min(900px,94%);margin:20px auto}
-.card{background:var(--panel);padding:16px;border:1px solid #35516b;border-radius:14px;margin:15px 0}
-h2{color:var(--gold);font-size:20px}
+body{margin:0;background:var(--navy);color:#fff;font-family:Arial,Tahoma,sans-serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
 .hidden{display:none!important}
-.status{color:#ffe0a0;white-space:pre-wrap}
-.small{font-size:13px;color:#ccd8e4}
-.row{display:flex;gap:8px;flex-wrap:wrap}
-.row>*{flex:1;min-width:120px}
-.msg{background:#e7edf3;color:#152638;padding:12px;border-radius:10px;margin:9px 0;overflow-wrap:anywhere}
-.reply{background:#d7f4e6}
-.photo{max-width:100%;max-height:400px;display:block;margin:10px auto;border-radius:10px}
-footer{text-align:center;padding:18px;color:#cbd5df}
+header{min-height:88px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 5%;background:linear-gradient(110deg,#050d18,#10233c);border-bottom:2px solid var(--gold);position:relative;z-index:2}
+.brand{display:flex;align-items:center;gap:13px}
+.logo{width:62px;height:62px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-family:Georgia,serif;font-size:23px;box-shadow:0 0 15px #e8c47720}
+.brand-name{font-size:clamp(19px,4vw,30px);font-weight:bold;color:var(--gold)}
+.brand-en{font-size:11px;letter-spacing:3px;margin-top:7px;color:#fff}
+.top-tools{display:flex;align-items:center;gap:12px}
+select{background:#10233c;color:white;border:1px solid #64748b;border-radius:10px;padding:10px;max-width:145px}
+.menu{font-size:28px;color:var(--gold);background:none;border:0}
+.hero{position:relative;min-height:440px;display:flex;align-items:center;overflow:hidden;background:linear-gradient(90deg,#07152620,#071526e8),url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=85') center/cover}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#071526 0%,transparent 60%)}
+.hero-content{position:relative;width:100%;padding:55px 7%;text-align:right}
+.hero h1{font-size:clamp(32px,6vw,58px);margin:0 0 20px;text-shadow:0 3px 15px #000}
+.hero p{font-size:clamp(17px,3vw,24px);line-height:1.9;max-width:650px;margin:0}
+.gold-line{width:130px;height:3px;background:var(--gold);margin:24px 0}
+.flag{position:absolute;left:7%;top:45px;width:130px;height:82px;display:flex;filter:drop-shadow(0 8px 12px #0008);transform:rotate(-4deg)}
+.flag span{flex:1}
+.flag .black{background:#111}
+.flag .red{background:#bd252b;display:grid;place-items:center}
+.flag .green{background:#08764c}
+.emblem{border:2px solid #f2e8d5;border-radius:50%;width:27px;height:27px;display:grid;place-items:center;color:#fff;font-size:13px}
+main{max-width:1100px;margin:0 auto;padding:25px 18px 100px}
+.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:center}
+.feature-image{width:100%;height:270px;object-fit:cover;border-radius:20px;border:1px solid #52647a}
+.feature-title{font-size:26px;color:var(--gold)}
+.feature-text{font-size:17px;line-height:2;color:#d9e2ed;white-space:pre-wrap}
+.empty-content{padding:25px;border:1px dashed #6b7c90;border-radius:15px;color:#d5deea;line-height:2}
+.card{background:#0e2036;border:1px solid #263d55;border-radius:16px;padding:20px;margin:18px 0}
+input,textarea{width:100%;padding:12px;margin:7px 0;background:#f8fafc;color:#172033;border:1px solid #cbd5e1;border-radius:9px}
+textarea{min-height:100px;resize:vertical}
+.btn{border:0;background:var(--teal);color:white;padding:12px 17px;border-radius:10px;font-weight:bold}
+.btn.gold{background:var(--gold);color:#152238}
+.btn.dark{background:#34465d}
+.btn.red{background:#b42318}
+.status{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7;margin-top:10px;color:#f3d68f}
+footer{border-top:1px solid #33465a;background:#06101e;padding:30px 5%;display:flex;justify-content:space-around;gap:20px;flex-wrap:wrap;color:#d9e2ed;line-height:2}
+footer strong{color:var(--gold)}
+.chat-launch{position:fixed;z-index:20;right:18px;bottom:20px;border:0;background:transparent;color:white;display:flex;flex-direction:column;align-items:center;gap:6px}
+.chat-circle{width:66px;height:66px;border-radius:50%;background:var(--teal);border:2px solid #16a6b2;display:grid;place-items:center;font-size:30px;box-shadow:0 8px 25px #0008}
+.chat-label{background:#087f8c;padding:8px 13px;border-radius:20px;font-size:14px;box-shadow:0 5px 15px #0005;white-space:nowrap}
+.chat-panel{position:fixed;z-index:30;right:18px;bottom:125px;width:min(370px,calc(100vw - 36px));height:min(500px,65vh);background:#fff;color:#18263a;border-radius:18px;box-shadow:0 12px 45px #0009;overflow:hidden;display:flex;flex-direction:column}
+.chat-head{background:linear-gradient(120deg,#075b70,#087f8c);color:#fff;padding:17px;display:flex;justify-content:space-between;align-items:center}
+.chat-head button{background:none;border:0;color:white;font-size:24px}
+.chat-body{padding:12px;overflow:auto;flex:1;background:#f2f5f9}
+.bubble{padding:11px 13px;border-radius:12px;background:#fff;margin:9px 0;line-height:1.7;overflow-wrap:anywhere;border:1px solid #e1e7ef}
+.bubble.admin-reply{background:#e4f5e8}
+.chat-compose{padding:10px;display:flex;gap:7px;border-top:1px solid #ddd}
+.chat-compose textarea{min-height:45px;max-height:90px;margin:0;flex:1}
+.chat-compose button{border:0;border-radius:50%;background:var(--teal);color:white;width:48px;font-size:20px}
+#adminPanel{border-color:var(--gold)}
+.admin-msg{background:#fff;color:#18263a;padding:14px;border-radius:12px;margin:12px 0;overflow-wrap:anywhere}
+.admin-msg label{display:block;margin-top:10px}
+.admin-msg textarea{min-height:75px}
+@media(max-width:650px){
+ header{padding:12px 4%;gap:8px}
+ .logo{width:48px;height:48px;font-size:18px}
+ .brand{gap:8px}.brand-en{letter-spacing:1px;font-size:9px}
+ .hero{min-height:390px}
+ .hero-content{padding:100px 6% 45px}
+ .flag{left:6%;top:20px;width:88px;height:57px}
+ .content-grid{grid-template-columns:1fr}
+ .feature-image{height:220px}
+ main{padding:18px 13px 100px}
+ footer{justify-content:flex-start}
+}
 </style>
 </head>
 <body>
 
-<header>
-  <div id="hero" style="max-width:100%;margin:auto">
-    <svg viewBox="0 0 1000 330" role="img" aria-label="نمایی از شهر کابل، کوه‌ها و بیرق افغانستان" style="width:100%;max-height:300px;display:block;border-radius:10px">
-      <defs>
-        <linearGradient id="sky" x2="0" y2="1">
-          <stop stop-color="#eaa86e"/><stop offset="1" stop-color="#273f5b"/>
-        </linearGradient>
-        <linearGradient id="mountain" x2="0" y2="1">
-          <stop stop-color="#687989"/><stop offset="1" stop-color="#263747"/>
-        </linearGradient>
-      </defs>
-      <rect width="1000" height="330" fill="url(#sky)"/>
-      <circle cx="790" cy="72" r="35" fill="#ffe2a2" opacity=".9"/>
-      <path d="M0 240 L100 160 170 207 280 115 375 210 490 130 610 222 740 135 850 213 930 157 1000 220 V330 H0Z" fill="url(#mountain)"/>
-      <path d="M0 268 L110 220 200 253 300 195 420 263 540 205 660 266 790 210 900 260 1000 225 V330 H0Z" fill="#26394b"/>
-      <g fill="#d2c5ac" stroke="#9a8b77" stroke-width="2">
-        <path d="M0 290h60v-30h45v30h45v-45h35v45h45v-25h50v25h45v-50h50v50h45v-32h35v32h50v-45h40v45h45v-26h55v26h50v-55h38v55h42v-30h52v30h50v-44h48v44h50v40H0Z"/>
-      </g>
-      <g fill="#33485b">
-        <rect x="95" y="271" width="8" height="19"/><rect x="240" y="268" width="8" height="22"/>
-        <rect x="368" y="260" width="8" height="30"/><rect x="515" y="265" width="8" height="25"/>
-        <rect x="700" y="263" width="8" height="27"/><rect x="885" y="263" width="8" height="27"/>
-      </g>
-      <g transform="translate(690 112) rotate(-7)">
-        <path d="M0 0v142" stroke="#272c33" stroke-width="5"/>
-        <path d="M4 3 Q65 8 120 0 L120 70 Q60 79 4 70Z" fill="#111"/>
-        <path d="M4 70 Q65 79 120 70 L120 140 Q60 148 4 140Z" fill="#168449"/>
-        <path d="M4 3 Q65 8 120 0 L120 70 Q60 79 4 70Z" fill="#111"/>
-        <path d="M4 70 Q65 79 120 70 L120 140 Q60 148 4 140Z" fill="#168449"/>
-        <path d="M4 47 Q65 55 120 44 L120 96 Q60 106 4 96Z" fill="#c8323e"/>
-        <g transform="translate(52 56)" fill="none" stroke="#f5e8cf" stroke-width="2">
-          <circle r="15"/><path d="M-9 -8h18v16h-18zM-12 0h24M0 -12v24"/>
-        </g>
-      </g>
-      <rect width="1000" height="330" fill="#071526" opacity=".12"/>
-    </svg>
+<!-- صفحه ورود: نام سایت در این صفحه نشان داده نمی‌شود -->
+<section id="entryPage">
+  <div class="hero" style="min-height:100vh">
+    <div class="flag" aria-hidden="true">
+      <span class="black"></span><span class="red"><i class="emblem">✦</i></span><span class="green"></span>
+    </div>
+    <div class="hero-content">
+      <div style="max-width:520px;margin-right:auto">
+        <h2 id="entryMessage" style="font-size:clamp(27px,5vw,44px)">یک جی‌بی انترنت برای یک ساعت در روز</h2>
+        <div class="gold-line"></div>
+        <label id="entryNameLabel" for="entryName">نام</label>
+        <input id="entryName" maxlength="80" placeholder="نام خود را بنویسید">
+        <label id="entryPhoneLabel" for="entryPhone">شماره تماس</label>
+        <input id="entryPhone" type="tel" maxlength="30" placeholder="شماره تماس">
+        <button class="btn gold" id="enterBtn" style="width:100%">ورود</button>
+        <div class="status" id="entryStatus"></div>
+        <label for="languageEntry" id="languageLabel">زبان</label>
+        <select id="languageEntry" style="margin-top:8px">
+          <option value="fa">🇦🇫 دری</option>
+          <option value="en">🇬🇧 English</option>
+          <option value="ps">🇦🇫 پښتو</option>
+        </select>
+      </div>
+    </div>
   </div>
-  <h1 id="brandName">صفحه شخصی</h1>
-  <div>به صفحه خوش آمدید</div>
-  <select id="language" aria-label="زبان">
-    <option value="fa">دری</option><option value="ps">پښتو</option><option value="en">English</option>
-  </select>
-</header>
+</section>
 
-<main class="wrap">
-  <section id="entry" class="card">
-    <h2 id="entryTitle">ورود به صفحه</h2>
-    <p>یک جی‌بی انترنت برای یک ساعت در روز</p>
-    <p class="small">برای درخواست ورود، نام و شماره تیلفون خود را بنویسید. ورود پس از تأیید مدیر فعال می‌شود.</p>
-    <input id="name" maxlength="80" placeholder="نام شما">
-    <input id="phone" maxlength="30" placeholder="شماره تیلفون">
-    <button id="requestBtn">درخواست ورود</button>
-    <p id="entryStatus" class="status"></p>
-  </section>
-
-  <section id="waiting" class="card hidden">
-    <h2>درخواست شما ثبت شد</h2>
-    <p>لطفاً منتظر تأیید مدیر بمانید. پس از تأیید، همین صفحه را دوباره باز کنید.</p>
-    <button id="checkBtn">بررسی وضعیت ورود</button>
-    <button id="backEntry" class="secondary">بازگشت</button>
-    <p id="waitStatus" class="status"></p>
-  </section>
-
-  <section id="userPage" class="hidden">
-    <div class="card">
-      <h2 id="welcome">خوش آمدید</h2>
-      <div id="userContent">هنوز محتوایی برای شما نشر نشده است.</div>
-      <button id="userLogout" class="secondary">خروج</button>
+<!-- صفحه اصلی بعد از ورود -->
+<section id="homePage" class="hidden">
+  <header>
+    <div class="brand">
+      <div class="logo">SN</div>
+      <div>
+        <div class="brand-name">سمیع الله نوری</div>
+        <div class="brand-en">SAMIULLAH NOORI</div>
+      </div>
     </div>
-    <div class="card">
-      <h2>پیام‌رسان</h2>
-      <div id="userMessages"></div>
-      <textarea id="messageText" maxlength="2000" placeholder="پیام خود را بنویسید"></textarea>
-      <button id="sendMessage">ارسال پیام</button>
-      <p id="messageStatus" class="status"></p>
+    <div class="top-tools">
+      <select id="languageHome" aria-label="Language">
+        <option value="fa">🇦🇫 دری</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="ps">🇦🇫 پښتو</option>
+      </select>
+      <button class="menu" id="menuBtn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="flag" aria-hidden="true">
+      <span class="black"></span><span class="red"><i class="emblem">✦</i></span><span class="green"></span>
+    </div>
+    <div class="hero-content">
+      <h1>سمیع الله نوری</h1>
+      <p id="heroSubtitle">آموزش، اطلاع‌رسانی، ارتباط بهتر</p>
+      <div class="gold-line"></div>
+      <p id="heroDescription">عکس‌ها و مطالبی که مدیر نشر می‌کند، در این بخش نمایش داده می‌شود.</p>
     </div>
   </section>
 
-  <section id="adminLogin" class="card hidden">
-    <h2>ورود مدیر</h2>
-    <input id="email" type="email" placeholder="ایمیل مدیر">
-    <input id="password" type="password" placeholder="رمز عبور">
-    <button id="loginAdmin">ورود</button>
-    <button id="cancelAdmin" class="secondary">بازگشت</button>
-    <p id="adminStatus" class="status"></p>
-  </section>
+  <main>
+    <section id="contentArea">
+      <div class="empty-content" id="emptyContent">
+        مطالب و عکس‌های مدیر در این قسمت نمایش داده می‌شود.
+      </div>
+      <div id="publishedContent"></div>
+    </section>
 
-  <section id="adminPage" class="hidden">
-    <div class="card">
-      <h2>پنل مدیریت</h2>
-      <p class="small">کاربران، درخواست‌های ورود، محتوا و پیام‌ها را مدیریت کنید.</p>
-      <button id="adminLogout" class="danger">خروج مدیر</button>
+    <section class="card hidden" id="adminPanel">
+      <h2 id="adminHeading" style="color:var(--gold)">مدیریت محتوا و پیام‌ها</h2>
+      <p id="adminHelp">برای نشر عکس و متن، معلومات زیر را وارد و ذخیره کنید.</p>
+      <label id="postTitleLabel" for="postTitle">عنوان</label>
+      <input id="postTitle" maxlength="160">
+      <label id="postTextLabel" for="postText">متن مطلب</label>
+      <textarea id="postText" maxlength="6000"></textarea>
+      <label id="postImageLabel" for="postImage">لینک عکس (URL)</label>
+      <input id="postImage" type="url" placeholder="https://...">
+      <button class="btn gold" id="publishBtn">نشر مطلب</button>
+      <div class="status" id="contentStatus"></div>
+      <hr style="border-color:#34465d;margin:25px 0">
+      <h3 id="allMessagesHeading">پیام‌های کاربران</h3>
+      <div id="allMessages"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div>♢ <strong id="securityFooter">امن و قابل اعتماد</strong><br><span id="securitySub">اطلاعات شما محفوظ است</span></div>
+    <div>◎ <strong id="languageFooter">سه زبانه</strong><br>دری | English | پښتو</div>
+    <div>© <span id="year">2026</span> سمیع الله نوری</div>
+  </footer>
+
+  <button class="chat-launch" id="chatLaunch">
+    <span class="chat-circle">☏</span>
+    <span class="chat-label" id="chatLabel">راه ارتباط با ما</span>
+  </button>
+
+  <section class="chat-panel hidden" id="chatPanel">
+    <div class="chat-head">
+      <strong id="chatHeading">پیام به مدیر</strong>
+      <button id="chatClose" aria-label="Close">×</button>
     </div>
-    <div class="card">
-      <h2>درخواست‌ها و کاربران</h2>
-      <div id="users"></div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-compose">
+      <textarea id="chatMessage" maxlength="2000" placeholder="پیام خود را بنویسید..."></textarea>
+      <button id="chatSend" aria-label="Send">➤</button>
     </div>
-    <div class="card">
-      <h2>نشر عکس و متن برای کاربر انتخاب‌شده</h2>
-      <p id="selected">یک کاربر را انتخاب کنید.</p>
-      <input id="postTitle" maxlength="150" placeholder="عنوان">
-      <textarea id="postText" maxlength="10000" placeholder="متن"></textarea>
-      <input id="imageUrl" type="url" placeholder="لینک مستقیم عکس (https://...)">
-      <p class="small">عکس را در یک سرویس میزبانی عکس بارگذاری کنید و لینک مستقیم آن را اینجا بگذارید. لینک باید به خود عکس ختم شود.</p>
-      <button id="publish">نشر محتوا</button>
-      <button id="removeContent" class="danger">حذف محتوای این کاربر</button>
-      <p id="publishStatus" class="status"></p>
-    </div>
-    <div class="card">
-      <h2>پیام‌های کاربران</h2>
-      <div id="adminMessages"></div>
-    </div>
+    <div id="chatStatus" style="padding:0 12px 8px;color:#9a5b00;font-size:13px"></div>
   </section>
-</main>
-<footer>صفحه شخصی</footer>
+</section>
+
+<!-- فرم مخفی مدیر -->
+<section id="adminLoginPage" class="hidden" style="min-height:100vh;padding:25px;background:#071526">
+  <div class="card" style="max-width:430px;margin:50px auto">
+    <h2 style="color:var(--gold)" id="adminLoginTitle">ورود مدیر</h2>
+    <label id="emailLabel" for="adminEmail">ایمیل مدیر</label>
+    <input id="adminEmail" type="email" autocomplete="username">
+    <label id="passwordLabel" for="adminPassword">رمز عبور</label>
+    <input id="adminPassword" type="password" autocomplete="current-password">
+    <button class="btn gold" id="adminLoginBtn" style="width:100%">ورود به مدیریت</button>
+    <button class="btn dark" id="cancelAdminBtn" style="width:100%">برگشت</button>
+    <div class="status" id="adminLoginStatus"></div>
+  </div>
+</section>
 
 <script type="module">
-import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import {getAuth,signInAnonymously,signInWithEmailAndPassword,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-import {getFirestore,doc,setDoc,getDoc,addDoc,deleteDoc,collection,onSnapshot,query,where,serverTimestamp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {initializeApp} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+import {
+ getAuth, signInAnonymously, signInWithEmailAndPassword, signOut,
+ onAuthStateChanged, setPersistence, browserLocalPersistence
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-auth.js";
+import {
+ getFirestore, collection, addDoc, query, where, onSnapshot,
+ serverTimestamp, doc, updateDoc, deleteDoc, setDoc, getDoc
+} from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
-const firebaseConfig={
+const firebaseConfig = {
  apiKey:"AIzaSyB55tsTKjUe6TfOtcXpoJmrIV5NWYXNFos",
  authDomain:"sami-web-2be7.firebaseapp.com",
  projectId:"sami-web-2be7",
@@ -161,176 +223,311 @@ const firebaseConfig={
  messagingSenderId:"631995015062",
  appId:"1:631995015062:web:21dcfa50c6231168c907b7"
 };
+
+// همان شناسه مدیر که قبلاً در کُد استفاده شده بود
 const ADMIN_UID="n6ONAJkRIHYpv4pWALIDuAIXcTz1";
-const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
 const $=id=>document.getElementById(id);
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-let me=null,myName="",myPhone="",selectedUid="",unsubs=[];
 
-function show(id){["entry","waiting","userPage","adminLogin","adminPage"].forEach(x=>$(x).classList.toggle("hidden",x!==id))}
-function msg(id,s){$(id).textContent=s}
-function stopAll(){unsubs.forEach(f=>f());unsubs=[]}
-async function guest(){if(!auth.currentUser)await signInAnonymously(auth);return auth.currentUser}
+let lang="fa", userName="", userPhone="", currentUser=null;
+let stopOwn=null, stopAll=null, stopContent=null;
+let touchTimer=null, twoFingerTriggered=false;
 
-async function getSite(){
- const snap=await getDoc(doc(db,"siteContent","main"));
- return snap.exists()?snap.data():{};
-}
-async function isApproved(uid){
- const site=await getSite();
- return Array.isArray(site.approvedUids)&&site.approvedUids.includes(uid);
-}
-async function enterUser(){
- if(!me)return;
- const ok=await isApproved(me.uid);
- if(!ok){show("waiting");return}
- show("userPage");
- $("welcome").textContent="خوش آمدید، "+myName;
- watchContent(me.uid);watchMessages(me.uid);
-}
-$("requestBtn").onclick=async()=>{
- myName=$("name").value.trim();myPhone=$("phone").value.trim();
- if(!myName||!myPhone){msg("entryStatus","نام و شماره تیلفون را وارد کنید.");return}
- try{
-  msg("entryStatus","در حال ثبت درخواست...");
-  me=await guest();
-  await setDoc(doc(db,"users",me.uid),{uid:me.uid,name:myName,phone:myPhone,requestedAt:serverTimestamp()},{merge:true});
-  show("waiting");msg("waitStatus","درخواست ثبت شد؛ منتظر تأیید مدیر باشید.");
- }catch(e){msg("entryStatus","خطا: "+e.message)}
-};
-$("checkBtn").onclick=async()=>{
- try{
-  if(await isApproved(me.uid))await enterUser();
-  else msg("waitStatus","هنوز درخواست شما تأیید نشده است.");
- }catch(e){msg("waitStatus","خطا: "+e.message)}
-};
-$("backEntry").onclick=()=>show("entry");
-function watchContent(uid){
- const stop=onSnapshot(doc(db,"personContent",uid),snap=>{
-  const box=$("userContent");box.innerHTML="";
-  if(!snap.exists()){box.textContent="هنوز محتوایی برای شما نشر نشده است.";return}
-  const d=snap.data();
-  if(d.title){const h=document.createElement("h3");h.textContent=d.title;box.appendChild(h)}
-  if(d.text){const p=document.createElement("p");p.textContent=d.text;box.appendChild(p)}
-  if(d.image){const im=document.createElement("img");im.className="photo";im.src=d.image;im.alt=d.title||"عکس";box.appendChild(im)}
- },e=>msg("messageStatus","خطا در محتوا: "+e.message));
- unsubs.push(stop);
-}
-function watchMessages(uid){
- const stop=onSnapshot(query(collection(db,"messages"),where("ownerUid","==",uid)),snap=>{
-  const box=$("userMessages");box.innerHTML="";
-  snap.forEach(s=>{
-   const d=s.data(),el=document.createElement("div");el.className="msg";
-   el.innerHTML="<b>پیام شما:</b><br>"+esc(d.message);
-   if(d.reply)el.innerHTML+='<div class="msg reply"><b>پاسخ مدیر:</b><br>'+esc(d.reply)+"</div>";
-   box.appendChild(el);
-  });
- },e=>msg("messageStatus","خطا: "+e.message));
- unsubs.push(stop);
-}
-$("sendMessage").onclick=async()=>{
- const text=$("messageText").value.trim();
- if(!me||!text)return msg("messageStatus","پیام را بنویسید.");
- try{
-  await addDoc(collection(db,"messages"),{ownerUid:me.uid,name:myName,phone:myPhone,message:text,reply:"",repliedAt:null,createdAt:serverTimestamp()});
-  $("messageText").value="";msg("messageStatus","پیام ارسال شد.");
- }catch(e){msg("messageStatus","ارسال نشد: "+e.message)}
-};
-$("userLogout").onclick=async()=>{stopAll();me=null;await signOut(auth);show("entry")};
-
-/* ورود مخفی مدیر: دو انگشت را ۵ ثانیه روی نشان بیرق نگه دارید */
-let fingers=new Set(),hold;
-$("hero").addEventListener("touchstart",e=>{
- for(const t of e.changedTouches)fingers.add(t.identifier);
- if(fingers.size>=2&&!hold)hold=setTimeout(()=>show("adminLogin"),5000);
-},{passive:true});
-function clearHold(e){
- for(const t of e.changedTouches)fingers.delete(t.identifier);
- if(fingers.size<2){clearTimeout(hold);hold=null}
-}
-$("hero").addEventListener("touchend",clearHold,{passive:true});
-$("hero").addEventListener("touchcancel",clearHold,{passive:true});
-
-$("cancelAdmin").onclick=()=>show("entry");
-$("loginAdmin").onclick=async()=>{
- try{
-  const r=await signInWithEmailAndPassword(auth,$("email").value.trim(),$("password").value);
-  if(r.user.uid!==ADMIN_UID){await signOut(auth);return msg("adminStatus","این حساب مدیر تعیین‌شده نیست.")}
-  me=r.user;show("adminPage");watchAdmin();
- }catch(e){msg("adminStatus","ورود ناموفق: "+e.message)}
-};
-function watchAdmin(){
- stopAll();
- unsubs.push(onSnapshot(collection(db,"users"),snap=>{
-  const box=$("users");box.innerHTML="";
-  snap.forEach(s=>{
-   const u=s.data(),b=document.createElement("button");
-   b.className="secondary";b.textContent=(u.name||"بدون نام")+" — "+(u.phone||"")+" | UID: "+s.id;
-   b.onclick=async()=>{
-    selectedUid=s.id;$("selected").textContent=(u.name||"")+" — "+(u.phone||"");
-    const approved=await isApproved(s.id);
-    const a=document.createElement("button");a.textContent=approved?"لغو تأیید ورود":"تأیید ورود";
-    a.onclick=()=>approval(s.id,!approved);
-    box.appendChild(a);
-   };
-   box.appendChild(b);
-  });
- },e=>msg("publishStatus","خطای کاربران: "+e.message)));
- unsubs.push(onSnapshot(collection(db,"messages"),snap=>{
-  const box=$("adminMessages");box.innerHTML="";
-  snap.forEach(s=>{
-   const d=s.data(),c=document.createElement("div");c.className="msg";
-   const p=document.createElement("p");p.textContent=(d.name||"کاربر")+" ("+(d.phone||"")+"): "+(d.message||"");
-   const ta=document.createElement("textarea");ta.maxLength=2000;ta.placeholder="پاسخ مدیر";ta.value=d.reply||"";
-   const b=document.createElement("button");b.textContent="ذخیره پاسخ";
-   b.onclick=async()=>{try{await setDoc(doc(db,"messages",s.id),{reply:ta.value.trim(),repliedAt:serverTimestamp()},{merge:true});msg("publishStatus","پاسخ ذخیره شد.")}catch(e){msg("publishStatus",e.message)}};
-   const del=document.createElement("button");del.className="danger";del.textContent="حذف پیام";
-   del.onclick=async()=>{if(confirm("پیام حذف شود؟"))try{await deleteDoc(doc(db,"messages",s.id))}catch(e){msg("publishStatus",e.message)}};
-   c.append(p,ta,b,del);box.appendChild(c);
-  });
- },e=>msg("publishStatus","خطای پیام‌ها: "+e.message)));
-}
-async function approval(uid,yes){
- try{
-  const site=await getSite(),list=Array.isArray(site.approvedUids)?site.approvedUids:[];
-  const next=yes?[...new Set([...list,uid])]:list.filter(x=>x!==uid);
-  await setDoc(doc(db,"siteContent","main"),{approvedUids:next},{merge:true});
-  msg("publishStatus",yes?"ورود کاربر تأیید شد.":"تأیید ورود لغو شد.");
-  watchAdmin();
- }catch(e){msg("publishStatus","تأیید انجام نشد: "+e.message+" — قواعد Firestore را بررسی کنید.")}
-}
-$("publish").onclick=async()=>{
- if(!selectedUid)return msg("publishStatus","اول یک کاربر را انتخاب کنید.");
- const image=$("imageUrl").value.trim();
- if(image&&!/^https:\/\/\S+$/i.test(image))return msg("publishStatus","لینک عکس باید با https:// شروع شود.");
- try{
-  await setDoc(doc(db,"personContent",selectedUid),{title:$("postTitle").value.trim(),text:$("postText").value.trim(),image,updatedAt:serverTimestamp()});
-  msg("publishStatus","محتوا نشر شد.");
- }catch(e){msg("publishStatus","نشر ناموفق: "+e.message)}
-};
-$("removeContent").onclick=async()=>{
- if(!selectedUid)return msg("publishStatus","اول کاربر را انتخاب کنید.");
- try{await deleteDoc(doc(db,"personContent",selectedUid));msg("publishStatus","محتوا حذف شد.")}catch(e){msg("publishStatus",e.message)}
-};
-$("adminLogout").onclick=async()=>{stopAll();me=null;await signOut(auth);show("entry")};
-
-$("language").onchange=e=>{
- const lang=e.target.value;document.documentElement.lang=lang;
- document.documentElement.dir=lang==="en"?"ltr":"rtl";
- if(lang==="en"){
-  $("entryTitle").textContent="Page access";
-  $("requestBtn").textContent="Request access";
-  $("brandName").textContent="Personal Page";
- }else if(lang==="ps"){
-  $("entryTitle").textContent="پاڼې ته ننوتل";
-  $("requestBtn").textContent="د ننوتلو غوښتنه";
-  $("brandName").textContent="شخصي پاڼه";
- }else{
-  $("entryTitle").textContent="ورود به صفحه";
-  $("requestBtn").textContent="درخواست ورود";
-  $("brandName").textContent="صفحه شخصی";
+const words={
+ fa:{
+  message:"یک جی‌بی انترنت برای یک ساعت در روز",name:"نام",phone:"شماره تماس",
+  namePlaceholder:"نام خود را بنویسید",phonePlaceholder:"شماره تماس",enter:"ورود",
+  language:"زبان",subtitle:"آموزش، اطلاع‌رسانی، ارتباط بهتر",
+  description:"عکس‌ها و مطالبی که مدیر نشر می‌کند، در این بخش نمایش داده می‌شود.",
+  empty:"مطالب و عکس‌های مدیر در این قسمت نمایش داده می‌شود.",
+  contact:"راه ارتباط با ما",chat:"پیام به مدیر",chatPlaceholder:"پیام خود را بنویسید...",
+  send:"ارسال",sent:"پیام شما ثبت شد.",writeMessage:"لطفاً متن پیام را بنویسید.",
+  enterDetails:"لطفاً نام و شماره تماس را وارد کنید.",admin:"ورود مدیر",
+  email:"ایمیل مدیر",password:"رمز عبور",adminEnter:"ورود به مدیریت",back:"برگشت",
+  adminHeading:"مدیریت محتوا و پیام‌ها",adminHelp:"برای نشر عکس و متن، معلومات زیر را وارد و ذخیره کنید.",
+  title:"عنوان",postText:"متن مطلب",image:"لینک عکس (URL)",publish:"نشر مطلب",
+  messages:"پیام‌های کاربران",save:"ذخیره پاسخ",delete:"حذف پیام",reply:"پاسخ مدیر",
+  noMessages:"هنوز پیامی نیست.",noReply:"هنوز پاسخی ثبت نشده است.",
+  published:"مطلب نشر شد.",publishError:"نشر مطلب ناموفق بود؛ قوانین Firestore باید تنظیم شود.",
+  loginError:"ورود ناموفق بود؛ ایمیل و رمز را بررسی کنید.",
+  adminOnly:"این حساب اجازهٔ مدیریت ندارد.",security:"امن و قابل اعتماد",
+  securitySub:"اطلاعات شما محفوظ است",three:"سه زبانه",loginNeeded:"برای ارسال پیام وارد شوید.",
+  loginTitle:"ورود مدیر",loginSuccess:"ورود مدیر موفق بود."
+ },
+ en:{
+  message:"1 GB of internet for one hour a day",name:"Name",phone:"Phone number",
+  namePlaceholder:"Enter your name",phonePlaceholder:"Phone number",enter:"Enter",
+  language:"Language",subtitle:"Learning, information and better connection",
+  description:"Photos and posts published by the administrator appear here.",
+  empty:"The administrator's photos and posts will appear here.",
+  contact:"Contact us",chat:"Message the administrator",chatPlaceholder:"Write your message...",
+  send:"Send",sent:"Your message was saved.",writeMessage:"Please write a message.",
+  enterDetails:"Please enter your name and phone number.",admin:"Administrator login",
+  email:"Administrator email",password:"Password",adminEnter:"Open admin panel",back:"Back",
+  adminHeading:"Content and message management",adminHelp:"Enter the details below to publish an image and text.",
+  title:"Title",postText:"Post text",image:"Image URL",publish:"Publish post",
+  messages:"User messages",save:"Save reply",delete:"Delete message",reply:"Admin reply",
+  noMessages:"No messages yet.",noReply:"No reply yet.",
+  published:"Post published.",publishError:"Could not publish. Firestore rules need configuration.",
+  loginError:"Login failed. Check email and password.",
+  adminOnly:"This account is not authorized as administrator.",security:"Secure and trusted",
+  securitySub:"Your information is protected",three:"Three languages",loginNeeded:"Please enter the site first.",
+  loginTitle:"Administrator login",loginSuccess:"Administrator signed in."
+ },
+ ps:{
+  message:"هره ورځ د یوې ګړۍ لپاره یو جي بي انټرنېټ",name:"نوم",phone:"د اړیکې شمېره",
+  namePlaceholder:"خپل نوم ولیکئ",phonePlaceholder:"د اړیکې شمېره",enter:"ننوتل",
+  language:"ژبه",subtitle:"زده کړه، معلومات او غوره اړیکه",
+  description:"د مدیر خپاره شوي انځورونه او مطالب دلته ښکاري.",
+  empty:"د مدیر انځورونه او مطالب به دلته ښکاره شي.",
+  contact:"له موږ سره اړیکه",chat:"مدیر ته پیغام",chatPlaceholder:"خپل پیغام ولیکئ...",
+  send:"لېږل",sent:"ستاسو پیغام ثبت شو.",writeMessage:"مهرباني وکړئ پیغام ولیکئ.",
+  enterDetails:"مهرباني وکړئ نوم او د اړیکې شمېره ولیکئ.",admin:"د مدیر ننوتل",
+  email:"د مدیر برېښنالیک",password:"پټ نوم",adminEnter:"مدیریت ته ننوتل",back:"شاته",
+  adminHeading:"د مطالبو او پیغامونو مدیریت",adminHelp:"د انځور او متن خپرولو لپاره لاندې معلومات ولیکئ.",
+  title:"سرلیک",postText:"د مطلب متن",image:"د انځور لینک",publish:"مطلب خپرول",
+  messages:"د کاروونکو پیغامونه",save:"ځواب خوندي کول",delete:"پیغام ړنګول",reply:"د مدیر ځواب",
+  noMessages:"تر اوسه پیغام نشته.",noReply:"تر اوسه ځواب نشته.",
+  published:"مطلب خپور شو.",publishError:"مطلب خپور نه شو؛ د Firestore قوانین باید تنظیم شي.",
+  loginError:"ننوتل ناکام شول؛ برېښنالیک او پټ نوم وګورئ.",
+  adminOnly:"دا حساب د مدیریت اجازه نه لري.",security:"خوندي او د باور وړ",
+  securitySub:"ستاسو معلومات خوندي دي",three:"درې ژبې",loginNeeded:"لومړی ویب‌سایټ ته ننوځئ.",
+  loginTitle:"د مدیر ننوتل",loginSuccess:"مدیر بریالی ننوتل."
  }
 };
+const t=()=>words[lang]||words.fa;
+
+function safe(v){
+ return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+}
+function setStatus(id,msg){$(id).textContent=msg}
+function applyLanguage(next){
+ lang=words[next]?next:"fa";
+ document.documentElement.lang=lang;
+ document.documentElement.dir=lang==="en"?"ltr":"rtl";
+ $("entryMessage").textContent=t().message;
+ $("entryNameLabel").textContent=t().name;
+ $("entryPhoneLabel").textContent=t().phone;
+ $("entryName").placeholder=t().namePlaceholder;
+ $("entryPhone").placeholder=t().phonePlaceholder;
+ $("enterBtn").textContent=t().enter;
+ $("languageLabel").textContent=t().language;
+ $("heroSubtitle").textContent=t().subtitle;
+ $("heroDescription").textContent=t().description;
+ $("emptyContent").textContent=t().empty;
+ $("chatLabel").textContent=t().contact;
+ $("chatHeading").textContent=t().chat;
+ $("chatMessage").placeholder=t().chatPlaceholder;
+ $("adminLoginTitle").textContent=t().loginTitle;
+ $("emailLabel").textContent=t().email;
+ $("passwordLabel").textContent=t().password;
+ $("adminLoginBtn").textContent=t().adminEnter;
+ $("cancelAdminBtn").textContent=t().back;
+ $("adminHeading").textContent=t().adminHeading;
+ $("adminHelp").textContent=t().adminHelp;
+ $("postTitleLabel").textContent=t().title;
+ $("postTextLabel").textContent=t().postText;
+ $("postImageLabel").textContent=t().image;
+ $("publishBtn").textContent=t().publish;
+ $("allMessagesHeading").textContent=t().messages;
+ $("securityFooter").textContent=t().security;
+ $("securitySub").textContent=t().securitySub;
+ $("languageFooter").textContent=t().three;
+ $("languageEntry").value=lang;
+ $("languageHome").value=lang;
+}
+$("languageEntry").addEventListener("change",e=>applyLanguage(e.target.value));
+$("languageHome").addEventListener("change",e=>applyLanguage(e.target.value));
+
+function showHome(){
+ $("entryPage").classList.add("hidden");
+ $("adminLoginPage").classList.add("hidden");
+ $("homePage").classList.remove("hidden");
+}
+function showAdminLogin(){
+ $("entryPage").classList.add("hidden");
+ $("homePage").classList.add("hidden");
+ $("adminLoginPage").classList.remove("hidden");
+}
+function showEntry(){
+ $("adminLoginPage").classList.add("hidden");
+ $("homePage").classList.add("hidden");
+ $("entryPage").classList.remove("hidden");
+}
+function startOwnMessages(user){
+ if(stopOwn)stopOwn();
+ const q=query(collection(db,"messages"),where("ownerUid","==",user.uid));
+ stopOwn=onSnapshot(q,snap=>{
+  const items=snap.docs.map(d=>({id:d.id,...d.data()}));
+  items.sort((a,b)=>(a.createdAt?.seconds||0)-(b.createdAt?.seconds||0));
+  $("chatBody").innerHTML=items.map(m=>`
+   <div class="bubble"><strong>${safe(m.name||userName)}</strong><br>${safe(m.message)}
+   <div class="small">${safe(m.phone||"")}</div></div>
+   ${m.reply?`<div class="bubble admin-reply"><strong>${safe(t().reply)}</strong><br>${safe(m.reply)}</div>`:""}
+  `).join("")||`<div class="bubble">${safe(t().noMessages)}</div>`;
+  $("chatBody").scrollTop=$("chatBody").scrollHeight;
+ },()=>setStatus("chatStatus","پیام‌ها خوانده نشدند؛ قوانین دیتابیس را بررسی کنید."));
+}
+function startContent(){
+ if(stopContent)stopContent();
+ stopContent=onSnapshot(doc(db,"siteContent","main"),snap=>{
+  const c=snap.exists()?snap.data():null;
+  if(!c||(!c.title&&!c.text&&!c.image)){
+   $("emptyContent").classList.remove("hidden");
+   $("publishedContent").innerHTML="";
+   return;
+  }
+  $("emptyContent").classList.add("hidden");
+  const image=c.image&&/^https?:\/\//i.test(c.image)
+    ?`<img class="feature-image" src="${safe(c.image)}" alt="${safe(c.title||"Site image")}">`:"";
+  $("publishedContent").innerHTML=`
+   <article class="card"><div class="content-grid">
+    <div>${image||""}</div>
+    <div><h2 class="feature-title">${safe(c.title||"")}</h2>
+    <div class="feature-text">${safe(c.text||"")}</div></div>
+   </div></article>`;
+ },()=>setStatus("contentStatus",t().publishError));
+}
+function startAllMessages(){
+ if(stopAll)stopAll();
+ stopAll=onSnapshot(collection(db,"messages"),snap=>{
+  const items=snap.docs.map(d=>({id:d.id,...d.data()}));
+  items.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));
+  $("allMessages").innerHTML=items.map(m=>`
+   <div class="admin-msg">
+    <strong>${safe(m.name)}</strong> · ${safe(m.phone||"")}
+    <p>${safe(m.message)}</p>
+    <label>${safe(t().reply)}</label>
+    <textarea id="r-${safe(m.id)}" maxlength="2000">${safe(m.reply||"")}</textarea>
+    <button class="btn" data-reply="${safe(m.id)}">${safe(t().save)}</button>
+    <button class="btn red" data-delete="${safe(m.id)}">${safe(t().delete)}</button>
+   </div>`).join("")||t().noMessages;
+ },()=>setStatus("contentStatus","دسترسی به پیام‌ها ممکن نشد."));
+}
+async function ensureGuest(){
+ if(!auth.currentUser)await signInAnonymously(auth);
+ return auth.currentUser;
+}
+onAuthStateChanged(auth,user=>{
+ currentUser=user;
+ if(user&&user.uid===ADMIN_UID){
+  $("adminPanel").classList.remove("hidden");
+  startAllMessages();
+ }else{
+  $("adminPanel").classList.add("hidden");
+  if(stopAll)stopAll();
+  stopAll=null;
+ }
+});
+
+$("enterBtn").addEventListener("click",async()=>{
+ userName=$("entryName").value.trim();
+ userPhone=$("entryPhone").value.trim();
+ if(!userName||!userPhone){setStatus("entryStatus",t().enterDetails);return}
+ try{
+  await setPersistence(auth,browserLocalPersistence);
+  const user=await ensureGuest();
+  if(user.uid===ADMIN_UID){setStatus("entryStatus",t().adminOnly);return}
+  localStorage.setItem("samiName",userName);
+  localStorage.setItem("samiPhone",userPhone);
+  showHome();
+  startOwnMessages(user);
+  startContent();
+ }catch(e){setStatus("entryStatus","اتصال ناموفق بود: "+e.message)}
+});
+$("chatLaunch").addEventListener("click",()=>{$("chatPanel").classList.toggle("hidden")});
+$("chatClose").addEventListener("click",()=>$("chatPanel").classList.add("hidden"));
+$("chatSend").addEventListener("click",async()=>{
+ const message=$("chatMessage").value.trim();
+ if(!currentUser||currentUser.uid===ADMIN_UID){setStatus("chatStatus",t().loginNeeded);return}
+ if(!message){setStatus("chatStatus",t().writeMessage);return}
+ try{
+  await addDoc(collection(db,"messages"),{
+   ownerUid:currentUser.uid,name:userName,phone:userPhone,message,
+   reply:"",repliedAt:null,createdAt:serverTimestamp()
+  });
+  $("chatMessage").value="";
+  setStatus("chatStatus",t().sent);
+ }catch(e){setStatus("chatStatus","پیام ثبت نشد؛ قوانین Firestore را بررسی کنید.")}
+});
+$("adminLoginBtn").addEventListener("click",async()=>{
+ const email=$("adminEmail").value.trim(),password=$("adminPassword").value;
+ if(!email||!password){setStatus("adminLoginStatus",t().loginError);return}
+ try{
+  const cred=await signInWithEmailAndPassword(auth,email,password);
+  if(cred.user.uid!==ADMIN_UID){
+   await signOut(auth);setStatus("adminLoginStatus",t().adminOnly);return;
+  }
+  userName="مدیر";
+  showHome();
+  startContent();
+  $("adminPanel").classList.remove("hidden");
+  startAllMessages();
+  setStatus("contentStatus",t().loginSuccess);
+ }catch(e){setStatus("adminLoginStatus",t().loginError)}
+});
+$("cancelAdminBtn").addEventListener("click",showEntry);
+
+$("publishBtn").addEventListener("click",async()=>{
+ if(!currentUser||currentUser.uid!==ADMIN_UID){setStatus("contentStatus",t().adminOnly);return}
+ const title=$("postTitle").value.trim();
+ const text=$("postText").value.trim();
+ const image=$("postImage").value.trim();
+ if(image&&!/^https?:\/\//i.test(image)){setStatus("contentStatus","لینک عکس باید با https:// یا http:// شروع شود.");return}
+ try{
+  await setDoc(doc(db,"siteContent","main"),{
+   title,text,image,updatedAt:serverTimestamp(),updatedBy:currentUser.uid
+  });
+  setStatus("contentStatus",t().published);
+ }catch(e){setStatus("contentStatus",t().publishError+" "+e.message)}
+});
+$("allMessages").addEventListener("click",async e=>{
+ const rb=e.target.closest("[data-reply]"),dbtn=e.target.closest("[data-delete]");
+ if(!currentUser||currentUser.uid!==ADMIN_UID)return;
+ if(rb){
+  try{
+   await updateDoc(doc(db,"messages",rb.dataset.reply),{
+    reply:$("r-"+rb.dataset.reply).value.trim(),repliedAt:serverTimestamp()
+   });
+   setStatus("contentStatus",t().save);
+  }catch(err){setStatus("contentStatus","ذخیره پاسخ ناموفق بود.")}
+ }
+ if(dbtn){
+  if(!confirm("این پیام حذف شود؟"))return;
+  try{await deleteDoc(doc(db,"messages",dbtn.dataset.delete))}
+  catch(err){setStatus("contentStatus","حذف پیام ناموفق بود.")}
+ }
+});
+
+// حرکت مخفی: دو انگشت را پنج ثانیه روی صفحه نگه‌دار
+document.addEventListener("touchstart",e=>{
+ if(e.touches.length===2){
+  twoFingerTriggered=false;
+  clearTimeout(touchTimer);
+  touchTimer=setTimeout(()=>{
+   twoFingerTriggered=true;
+   showAdminLogin();
+  },5000);
+ }
+},{passive:true});
+document.addEventListener("touchend",()=>clearTimeout(touchTimer),{passive:true});
+document.addEventListener("touchcancel",()=>clearTimeout(touchTimer),{passive:true});
+
+// نگه‌داشتن دو دکمهٔ ماوس نیز برای آزمایش روی کمپیوتر
+document.addEventListener("contextmenu",e=>e.preventDefault());
+applyLanguage("fa");
+
+// اگر کاربر در همین مرورگر قبلاً وارد شده، معلومات او را دوباره نشان بده
+try{
+ const savedName=localStorage.getItem("samiName");
+ const savedPhone=localStorage.getItem("samiPhone");
+ if(savedName&&savedPhone){
+  $("entryName").value=savedName;
+  $("entryPhone").value=savedPhone;
+ }
+}catch(e){}
 </script>
 </body>
 </html>
