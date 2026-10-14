@@ -1,57 +1,497 @@
 
-rules_version = '2';
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071526">
+<title>سمیع الله نوری</title>
 
-service cloud.firestore {
-  match /databases/{database}/documents {
-
-    function isAdmin() {
-      return request.auth != null
-        && request.auth.uid == "n6ONAJkRIHYpv4pWALIDuAIXcTz1";
-    }
-
-    match /users/{userId} {
-      allow read: if isAdmin()
-        || (request.auth != null
-            && request.auth.uid == userId);
-
-      allow create, update: if request.auth != null
-        && request.auth.uid == userId
-        && request.resource.data.uid == userId
-        && request.resource.data.name is string
-        && request.resource.data.phone is string;
-
-      allow delete: if isAdmin();
-    }
-
-    match /personContent/{userId} {
-      allow read: if isAdmin()
-        || (request.auth != null
-            && request.auth.uid == userId);
-
-      allow create, update, delete: if isAdmin();
-    }
-
-    match /messages/{messageId} {
-      allow read: if isAdmin()
-        || (request.auth != null
-            && resource.data.ownerUid == request.auth.uid);
-
-      allow create: if request.auth != null
-        && request.resource.data.ownerUid == request.auth.uid
-        && request.resource.data.name is string
-        && request.resource.data.phone is string
-        && request.resource.data.message is string
-        && request.resource.data.message.size() > 0
-        && request.resource.data.message.size() <= 2000
-        && request.resource.data.reply == ""
-        && request.resource.data.repliedAt == null;
-
-      allow update, delete: if isAdmin();
-    }
-
-    match /siteContent/{contentId} {
-      allow read: if request.auth != null;
-      allow create, update, delete: if isAdmin();
-    }
-  }
+<style>
+:root {
+  --navy:#071526;
+  --navy2:#102743;
+  --gold:#e8c477;
+  --teal:#087f8c;
+  --white:#ffffff;
 }
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  font-family:Tahoma,Arial,sans-serif;
+  color:var(--white);
+  background:var(--navy);
+  line-height:1.8;
+}
+.hidden { display:none !important; }
+.hero {
+  min-height:220px;
+  padding:25px 16px;
+  text-align:center;
+  background:
+    linear-gradient(135deg,rgba(7,21,38,.70),rgba(7,21,38,.55)),
+    linear-gradient(160deg,#31546b,#172d43 55%,#071526);
+  border-bottom:2px solid var(--gold);
+}
+.emblem {
+  width:66px;height:66px;
+  margin:auto;
+  border:2px solid var(--gold);
+  border-radius:50%;
+  display:grid;place-items:center;
+  font-size:25px;font-weight:bold;color:var(--gold);
+}
+h1,h2 { color:var(--gold); }
+.container {
+  width:min(920px,94%);
+  margin:22px auto;
+}
+.card {
+  background:rgba(16,39,67,.96);
+  border:1px solid #39516a;
+  border-radius:15px;
+  padding:18px;
+  margin-bottom:18px;
+}
+input,textarea,select,button {
+  width:100%;
+  padding:12px;
+  margin:7px 0;
+  border-radius:8px;
+  font:inherit;
+}
+input,textarea,select {
+  background:#fff;color:#111;
+  border:1px solid #aaa;
+}
+button {
+  background:var(--gold);
+  color:#071526;
+  border:0;
+  font-weight:bold;
+  cursor:pointer;
+}
+button.secondary { background:#087f8c;color:white; }
+button.danger { background:#9b3030;color:white; }
+.row {
+  display:flex;gap:10px;flex-wrap:wrap;
+}
+.row>* { flex:1;min-width:130px; }
+.status { color:#ffdc91;white-space:pre-wrap; }
+.feature-image {
+  width:100%;max-height:380px;
+  object-fit:contain;border-radius:10px;
+}
+.bubble {
+  background:#e8eef4;color:#152638;
+  border-radius:12px;padding:12px;margin:9px 0;
+  overflow-wrap:anywhere;
+}
+.admin-reply { background:#d7f4e6; }
+.small { color:#c8d5e2;font-size:13px; }
+footer {
+  text-align:center;padding:20px;
+  color:#d2d9e1;border-top:1px solid #39516a;
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="emblem">SN</div>
+  <h1>سمیع الله نوری</h1>
+  <p>به ویب‌سایت رسمی خوش آمدید</p>
+  <select id="language" aria-label="زبان">
+    <option value="fa">دری</option>
+    <option value="en">English</option>
+    <option value="ps">پښتو</option>
+  </select>
+</header>
+
+<main class="container">
+
+<section id="entryPage" class="card">
+  <h2>ورود به سایت</h2>
+  <p>نام و شماره تیلفون خود را وارد کنید.</p>
+  <input id="userName" maxlength="80" placeholder="نام شما">
+  <input id="userPhone" maxlength="30" placeholder="شماره تیلفون">
+  <button id="enterBtn">ورود به سایت</button>
+  <p id="entryStatus" class="status"></p>
+</section>
+
+<section id="homePage" class="hidden">
+  <div class="card">
+    <h2 id="welcome">خوش آمدید</h2>
+    <p>محتوا و پیام‌های مربوط به حساب شما در این بخش نمایش داده می‌شود.</p>
+    <button id="logoutBtn" class="secondary">خروج</button>
+  </div>
+
+  <div class="card">
+    <h2>محتوای مخصوص شما</h2>
+    <div id="emptyContent">هنوز عکس یا نوشته‌ای برای شما نشر نشده است.</div>
+    <div id="publishedContent"></div>
+    <p id="contentStatus" class="status"></p>
+  </div>
+
+  <div class="card">
+    <h2>پیام‌رسان</h2>
+    <div id="chatBody"></div>
+    <textarea id="messageInput" maxlength="2000"
+      placeholder="پیام خود را بنویسید..."></textarea>
+    <button id="sendBtn">ارسال پیام</button>
+    <p id="chatStatus" class="status"></p>
+  </div>
+</section>
+
+<section id="adminLoginPage" class="hidden card">
+  <h2>ورود مدیر</h2>
+  <input id="adminEmail" type="email" placeholder="ایمیل مدیر">
+  <input id="adminPassword" type="password" placeholder="رمز عبور">
+  <button id="adminLoginBtn">ورود به پنل مدیر</button>
+  <button id="backBtn" class="secondary">بازگشت</button>
+  <p id="adminLoginStatus" class="status"></p>
+</section>
+
+<section id="adminPage" class="hidden">
+  <div class="card">
+    <h2>پنل مدیریت</h2>
+    <button id="adminLogoutBtn" class="danger">خروج مدیر</button>
+  </div>
+
+  <div class="card">
+    <h2>کاربران سایت</h2>
+    <div id="usersList"></div>
+  </div>
+
+  <div class="card">
+    <h2>نشر محتوا برای کاربر انتخاب‌شده</h2>
+    <p id="selectedUser">هنوز کاربری انتخاب نشده است.</p>
+    <input id="contentTitle" maxlength="150" placeholder="عنوان نوشته">
+    <textarea id="contentText" maxlength="10000"
+      placeholder="متن مورد نظر"></textarea>
+    <input id="contentImage" type="url"
+      placeholder="لینک مستقیم عکس">
+    <button id="publishBtn">نشر برای این کاربر</button>
+    <p id="publishStatus" class="status"></p>
+  </div>
+
+  <div class="card">
+    <h2>تمام پیام‌های کاربران</h2>
+    <div id="allMessages"></div>
+  </div>
+</section>
+
+</main>
+
+<footer>سمیع الله نوری — تمامی حقوق محفوظ است</footer>
+
+<script type="module">
+import { initializeApp }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {
+  getAuth, signInAnonymously, signInWithEmailAndPassword,
+  signOut, onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {
+  getFirestore, collection, doc, setDoc, addDoc,
+  onSnapshot, query, where, serverTimestamp, getDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+// Firebase Config
+const firebaseConfig = {
+  apiKey: "AIzaSyB55tsTKjUe6TfOtcXpoJmrIV5NWYXNFos",
+  authDomain: "sami-web-2be7.firebaseapp.com",
+  projectId: "sami-web-2be7",
+  storageBucket: "sami-web-2be7.firebasestorage.app",
+  messagingSenderId: "631995015062",
+  appId: "1:631995015062:web:21dcfa50c6231168c907b7"
+};
+
+const ADMIN_UID = "n6ONAJkRIHYpv4pWALIDuAIXcTz1";
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const $ = id => document.getElementById(id);
+const safe = value => String(value ?? "").replace(/[&<>"']/g, c => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
+
+let currentUser = null;
+let userName = "";
+let userPhone = "";
+let selectedUid = "";
+let stopOwn = null;
+let stopContent = null;
+let stopAll = null;
+let stopUsers = null;
+
+function show(id) {
+  ["entryPage","homePage","adminLoginPage","adminPage"]
+    .forEach(x => $(x).classList.toggle("hidden",x !== id));
+}
+function status(id,message) { $(id).textContent = message; }
+
+async function ensureGuest() {
+  if (!auth.currentUser) await signInAnonymously(auth);
+  return auth.currentUser;
+}
+
+$("enterBtn").addEventListener("click", async () => {
+  userName = $("userName").value.trim();
+  userPhone = $("userPhone").value.trim();
+  if (!userName || !userPhone) {
+    status("entryStatus","لطفاً نام و شماره تیلفون را وارد کنید.");
+    return;
+  }
+  try {
+    status("entryStatus","لطفاً صبر کنید...");
+    const user = await ensureGuest();
+    await setDoc(doc(db,"users",user.uid),{
+      uid:user.uid,name:userName,phone:userPhone,
+      updatedAt:serverTimestamp()
+    },{merge:true});
+    currentUser = user;
+    $("welcome").textContent = "خوش آمدید، " + userName;
+    show("homePage");
+    startOwnMessages(user);
+    startPersonalContent(user);
+  } catch(e) {
+    status("entryStatus","خطا در ورود: " + e.message);
+  }
+});
+function stopListeners() {
+  [stopOwn,stopContent,stopAll,stopUsers].forEach(fn => {
+    if (typeof fn === "function") fn();
+  });
+  stopOwn = stopContent = stopAll = stopUsers = null;
+}
+
+function startOwnMessages(user) {
+  if (stopOwn) stopOwn();
+  stopOwn = onSnapshot(
+    query(collection(db,"messages"),where("ownerUid","==",user.uid)),
+    snapshot => {
+      const box = $("chatBody");
+      box.innerHTML = "";
+      snapshot.forEach(item => {
+        const m = item.data();
+        const div = document.createElement("div");
+        div.className = "bubble";
+        div.innerHTML =
+          "<b>پیام شما:</b><br>" + safe(m.message);
+        if (m.reply) {
+          div.innerHTML +=
+            '<div class="bubble admin-reply"><b>پاسخ مدیر:</b><br>' +
+            safe(m.reply) + "</div>";
+        }
+        box.appendChild(div);
+      });
+    },
+    error => status("chatStatus","خطا در پیام‌ها: " + error.message)
+  );
+}
+
+function startPersonalContent(user) {
+  if (stopContent) stopContent();
+  stopContent = onSnapshot(
+    doc(db,"personContent",user.uid),
+    snapshot => {
+      const box = $("publishedContent");
+      box.innerHTML = "";
+      $("emptyContent").classList.toggle("hidden",snapshot.exists());
+      if (!snapshot.exists()) return;
+      const data = snapshot.data();
+      const title = document.createElement("h3");
+      title.textContent = data.title || "";
+      const paragraph = document.createElement("p");
+      paragraph.textContent = data.text || "";
+      box.append(title,paragraph);
+      if (data.image) {
+        const img = document.createElement("img");
+        img.className = "feature-image";
+        img.src = data.image;
+        img.alt = data.title || "عکس";
+        img.referrerPolicy = "no-referrer";
+        box.appendChild(img);
+      }
+    },
+    error => status("contentStatus","خطا: " + error.message)
+  );
+}
+
+$("sendBtn").addEventListener("click",async () => {
+  const message = $("messageInput").value.trim();
+  if (!currentUser || !message) {
+    status("chatStatus","اول وارد سایت شو و پیام بنویس.");
+    return;
+  }
+  try {
+    await addDoc(collection(db,"messages"),{
+      ownerUid:currentUser.uid,
+      name:userName,
+      phone:userPhone,
+      message,
+      reply:"",
+      repliedAt:null,
+      createdAt:serverTimestamp()
+    });
+    $("messageInput").value = "";
+    status("chatStatus","پیام ارسال شد.");
+  } catch(e) {
+    status("chatStatus","پیام ارسال نشد: " + e.message);
+  }
+});
+
+$("logoutBtn").addEventListener("click",async () => {
+  stopListeners();
+  currentUser = null;
+  await signOut(auth);
+  show("entryPage");
+});
+
+$("backBtn").addEventListener("click",() => show("entryPage"));
+
+// باز کردن صفحه ورود مدیر با نگه‌داشتن نشان SN
+let holdTimer;
+const emblem = document.querySelector(".emblem");
+emblem.addEventListener("pointerdown",() => {
+  holdTimer = setTimeout(() => show("adminLoginPage"),3000);
+});
+["pointerup","pointerleave","pointercancel"].forEach(eventName => {
+  emblem.addEventListener(eventName,() => clearTimeout(holdTimer));
+});
+
+$("adminLoginBtn").addEventListener("click",async () => {
+  const email = $("adminEmail").value.trim();
+  const password = $("adminPassword").value;
+  if (!email || !password) {
+    status("adminLoginStatus","ایمیل و رمز عبور را وارد کن.");
+    return;
+  }
+  try {
+    status("adminLoginStatus","در حال بررسی...");
+    const result = await signInWithEmailAndPassword(auth,email,password);
+    if (result.user.uid !== ADMIN_UID) {
+      await signOut(auth);
+      status("adminLoginStatus","این حساب، مدیر تعیین‌شده سایت نیست.");
+      return;
+    }
+    currentUser = result.user;
+    show("adminPage");
+    startAdminPanel();
+  } catch(e) {
+    status("adminLoginStatus","ورود ناموفق: " + e.message);
+  }
+});
+
+function startAdminPanel() {
+  if (stopUsers) stopUsers();
+  if (stopAll) stopAll();
+
+  stopUsers = onSnapshot(collection(db,"users"),snapshot => {
+    const box = $("usersList");
+    box.innerHTML = "";
+    snapshot.forEach(item => {
+      const u = item.data();
+      const button = document.createElement("button");
+      button.className = "secondary";
+      button.textContent = (u.name || "بدون نام") +
+        " — " + (u.phone || "بدون شماره");
+      button.addEventListener("click",() => {
+        selectedUid = item.id;
+        $("selectedUser").textContent =
+          (u.name || "") + " — " + (u.phone || "");
+        status("publishStatus","");
+      });
+      box.appendChild(button);
+    });
+  },e => status("publishStatus","خطای کاربران: " + e.message));
+
+  stopAll = onSnapshot(collection(db,"messages"),snapshot => {
+    const box = $("allMessages");
+    box.innerHTML = "";
+    snapshot.forEach(item => {
+      const m = item.data();
+      const card = document.createElement("div");
+      card.className = "bubble";
+      const info = document.createElement("p");
+      info.textContent = (m.name || "کاربر") + " (" +
+        (m.phone || "") + "): " + (m.message || "");
+      const reply = document.createElement("textarea");
+      reply.maxLength = 2000;
+      reply.placeholder = "پاسخ مدیر";
+      reply.value = m.reply || "";
+      const save = document.createElement("button");
+      save.textContent = "ذخیره پاسخ";
+      save.addEventListener("click",async () => {
+        try {
+          await setDoc(doc(db,"messages",item.id),{
+            reply:reply.value.trim(),
+            repliedAt:serverTimestamp()
+          },{merge:true});
+          status("publishStatus","پاسخ ذخیره شد.");
+        } catch(e) {
+          status("publishStatus","خطا در پاسخ: " + e.message);
+        }
+      });
+      const remove = document.createElement("button");
+      remove.className = "danger";
+      remove.textContent = "حذف پیام";
+      remove.addEventListener("click",async () => {
+        if (!confirm("آیا پیام حذف شود؟")) return;
+        try {
+          const { deleteDoc } = await import(
+            "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js"
+          );
+          await deleteDoc(doc(db,"messages",item.id));
+        } catch(e) {
+          status("publishStatus","حذف ناموفق: " + e.message);
+        }
+      });
+      card.append(info,reply,save,remove);
+      box.appendChild(card);
+    });
+  },e => status("publishStatus","خطای پیام‌ها: " + e.message));
+}
+
+$("publishBtn").addEventListener("click",async () => {
+  if (!selectedUid) {
+    status("publishStatus","اول یک کاربر را انتخاب کن.");
+    return;
+  }
+  const title = $("contentTitle").value.trim();
+  const text = $("contentText").value.trim();
+  const image = $("contentImage").value.trim();
+
+  if (image && !/^https:\/\/\S+$/i.test(image)) {
+    status("publishStatus","لینک عکس باید با https:// شروع شود.");
+    return;
+  }
+  try {
+    await setDoc(doc(db,"personContent",selectedUid),{
+      title,text,image,updatedAt:serverTimestamp()
+    });
+    status("publishStatus","محتوا برای کاربر انتخاب‌شده نشر شد.");
+  } catch(e) {
+    status("publishStatus","نشر ناموفق: " + e.message);
+  }
+});
+
+$("adminLogoutBtn").addEventListener("click",async () => {
+  stopListeners();
+  currentUser = null;
+  selectedUid = "";
+  await signOut(auth);
+  show("entryPage");
+});
+
+$("language").addEventListener("change",event => {
+  const lang = event.target.value;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "en" ? "ltr" : "rtl";
+});
+
+// پایان فایل
+</script>
+</body>
+</html>
